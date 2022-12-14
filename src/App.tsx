@@ -1,10 +1,9 @@
-import { Button, Heading } from "@chakra-ui/react";
+import { Header } from "./components/Header";
 
 function App() {
   return (
     <>
-      <Heading>Hello World</Heading>
-      <Button variant="grey1">Text Button</Button>
+      <Header />
     </>
   );
 }
