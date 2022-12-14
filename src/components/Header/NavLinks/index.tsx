@@ -80,10 +80,7 @@ export const NavLinks = ({ isOpen }: NavLinksProps) => {
             </Menu>
           </Flex>
         ) : (
-          <Flex
-            gap="72px
-            "
-          >
+          <Flex justifyContent={"space-evenly"}>
             <Button variant={"light"}>Fazer Login</Button>
             <Button variant="outline1">Cadastrar</Button>
           </Flex>

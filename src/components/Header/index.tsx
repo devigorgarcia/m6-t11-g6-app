@@ -18,10 +18,9 @@ export const Header = () => {
       justify="space-between"
       wrap="wrap"
       w="100vw"
-      p={["2rem", "2rem", "1rem"]}
-      boxShadow="0px 3px 8px 0px rgba(0,0,0,0.2)"
+      p={["2rem", "2rem", "1rem", "0 3rem"]}
     >
-      <Image src={MotorsLogo} h='30px'/>
+      <Image src={MotorsLogo} h="30px" />
       <MenuToogle isOpen={isOpen} toggle={toggle} />
       <NavLinks isOpen={isOpen} />
     </Flex>
