@@ -1,9 +1,12 @@
-import { Rotas } from "./routes/routes.jsx";
+import { Router } from "./routes/routers";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
-      <Rotas />
+      <ToastContainer />
+      <Router />
     </>
   );
 }
