@@ -1,10 +1,10 @@
-import { Button, Heading } from "@chakra-ui/react";
+
+import { Rotas } from "./routes/routes.jsx";
 
 function App() {
   return (
     <>
-      <Heading>Hello World</Heading>
-      <Button variant="grey1">Text Button</Button>
+      <Rotas />
     </>
   );
 }
