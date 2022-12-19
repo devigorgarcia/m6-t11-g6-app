@@ -21,6 +21,7 @@ export const theme = extendTheme({
       9: "#F8F9FA",
       10: "#FDFDFD",
       11: "#FFFFFF",
+      700: "#2C2C2C"
     },
     feedbacks: {
       alert1: "#CD2B31",
