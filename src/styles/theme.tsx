@@ -202,9 +202,9 @@ export const theme = extendTheme({
           },
         },
         outlineBrand: {
-          bg: "#FDFDFD",
+          bg: "#EDEAFD",
           color: "#4529E6",
-          border: "1.5px solid #FDFDFD",
+          border: "1.5px solid #EDEAFD",
           borderRadius: "4px",
           fontFamily: "Inter",
           fontWeight: "600",
