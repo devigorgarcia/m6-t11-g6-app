@@ -1,12 +1,12 @@
 import { Footer } from "../../components/Footer";
-import { FormLogin } from "../../components/FormLogin";
 import { Header } from "../../components/Header";
+import { ProductComponent } from "../../components/ProductPage";
 
-export const Login = () => {
+export const ProductPage = () => {
   return (
     <>
       <Header />
-      <FormLogin />
+      <ProductComponent />
       <Footer />
     </>
   );

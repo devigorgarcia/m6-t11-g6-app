@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { DashboardAnnouncementPage } from "../pages/DashboardAnnouncement";
 import { Login } from "../pages/Login";
+import { ProductPage } from "../pages/ProductPage";
 
 export const paths = {
   login: "/",
@@ -16,6 +17,7 @@ export const Router = () => {
         path="/dashboardAnnouncement"
         element={<DashboardAnnouncementPage />}
       />
+      <Route path="/productDetail" element={<ProductPage />} />
     </Routes>
   );
 };

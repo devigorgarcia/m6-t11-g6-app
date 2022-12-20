@@ -7,7 +7,7 @@ import { Comments } from "./Comments";
 import { CommentBox } from "./CommentBox";
 import { CarImage } from "./CarImage";
 
-export const ProductPage = () => {
+export const ProductComponent = () => {
   return (
     <Flex
       flexDirection={"column"}

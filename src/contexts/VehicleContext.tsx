@@ -2,7 +2,10 @@ import { useContext } from "react";
 import { createContext } from "react";
 import { api } from "../api";
 import { ProviderData } from "../interfaces/provider.interface";
-import { ICreateVehicleData, VehicleContextData } from "../interfaces/VehicleContext/Vehicle.interfaces";
+import {
+  ICreateVehicleData,
+  VehicleContextData,
+} from "../interfaces/VehicleContext/Vehicle.interfaces";
 import { ModalContext } from "./ModalContext";
 
 export const VehicleContext = createContext<VehicleContextData>(
@@ -10,7 +13,7 @@ export const VehicleContext = createContext<VehicleContextData>(
 );
 
 export const VehicleProvider = ({ children }: ProviderData) => {
-  const { onCloseCreate } = useContext(ModalContext);
+  const { onCloseCreate, onOpenSucess } = useContext(ModalContext);
   const token = localStorage.getItem("@MotorShop:Token");
 
   api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -20,6 +23,7 @@ export const VehicleProvider = ({ children }: ProviderData) => {
       .post("/vehicles", data)
       .then((resp) => {
         onCloseCreate();
+        onOpenSucess();
         console.log(resp);
       })
       .catch((err) => console.log(err));
