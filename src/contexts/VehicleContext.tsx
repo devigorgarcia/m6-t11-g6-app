@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { createContext } from "react";
 import { api } from "../api";
 import { ProviderData } from "../interfaces/provider.interface";
@@ -14,6 +14,11 @@ export const VehicleContext = createContext<VehicleContextData>(
 
 export const VehicleProvider = ({ children }: ProviderData) => {
   const { onCloseCreate, onOpenSucess } = useContext(ModalContext);
+
+  const [vehicleInfo, setVehicleInfo] = useState<ICreateVehicleData>(
+    {} as ICreateVehicleData
+  );
+
   const token = localStorage.getItem("@MotorShop:Token");
 
   api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -29,8 +34,17 @@ export const VehicleProvider = ({ children }: ProviderData) => {
       .catch((err) => console.log(err));
   };
 
+  const profileVehicle = async (vehicleId: string) => {
+    await api
+      .get(`/vehicles/${vehicleId}`)
+      .then((resp) => setVehicleInfo(resp.data))
+      .catch((error) => console.log(error));
+  };
+
   return (
-    <VehicleContext.Provider value={{ createVehicle }}>
+    <VehicleContext.Provider
+      value={{ createVehicle, profileVehicle, vehicleInfo }}
+    >
       {children}
     </VehicleContext.Provider>
   );
