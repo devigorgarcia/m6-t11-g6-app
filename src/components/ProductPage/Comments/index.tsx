@@ -18,8 +18,8 @@ export const Comments = () => {
   const avatar3 = `${firstLetter3 + secondLetter3}`;
   return (
     <Flex
-      bg="#F8F9FA"
-      width={"90%"}
+      bg="grey.9"
+      width={["90%", "70%"]}
       margin={"0 auto"}
       flexDirection={"column"}
       alignItems={"center"}
@@ -42,7 +42,7 @@ export const Comments = () => {
               w="32px"
               h="32px"
               rounded="full"
-              bg={"#E34D8C"}
+              bg={"random.1"}
               alignItems="center"
               justifyContent="center"
             >
@@ -53,7 +53,7 @@ export const Comments = () => {
           </Flex>
           <Text>{name1}</Text>
           <Image src={bolinha} />
-          <Text color={"#868E96"}>há 3 dias</Text>
+          <Text color={"grey.3"}>há 3 dias</Text>
         </Flex>
         <Text>
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -74,7 +74,7 @@ export const Comments = () => {
               w="32px"
               h="32px"
               rounded="full"
-              bg="#7000FF"
+              bg="random.4"
               alignItems="center"
               justifyContent="center"
             >
@@ -85,7 +85,7 @@ export const Comments = () => {
           </Flex>
           <Text>{name2}</Text>
           <Image src={bolinha} />
-          <Text color={"#868E96"}>há 7 dias</Text>
+          <Text color={"grey.3"}>há 7 dias</Text>
         </Flex>
         <Text>
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -106,7 +106,7 @@ export const Comments = () => {
               w="32px"
               h="32px"
               rounded="full"
-              bg="#153D2E"
+              bg="random.9"
               alignItems="center"
               justifyContent="center"
             >
@@ -117,7 +117,7 @@ export const Comments = () => {
           </Flex>
           <Text>{name3}</Text>
           <Image src={bolinha} />
-          <Text color={"#868E96"}>há 1 mês</Text>
+          <Text color={"grey.3"}>há 1 mês</Text>
         </Flex>
         <Text>
           Lorem Ipsum is simply dummy text of the printing and typesetting

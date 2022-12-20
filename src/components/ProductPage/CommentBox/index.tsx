@@ -7,8 +7,8 @@ export const CommentBox = () => {
   const avatar = `${firstLetter + secondLetter}`;
   return (
     <Flex
-      bg="#F8F9FA"
-      width={"90%"}
+      bg="grey.9"
+      width={["90%","70%"]}
       margin={"0 auto"}
       flexDirection={"column"}
       justifyContent={"space-evenly"}
