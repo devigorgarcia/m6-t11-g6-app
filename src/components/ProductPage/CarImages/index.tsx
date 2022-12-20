@@ -4,7 +4,7 @@ import car from "../../../assets/car.jpg";
 export const CarImages = () => {
   return (
     <Flex
-      bg="#F8F9FA"
+      bg="grey.9"
       width={"90%"}
       height={"350px"}
       margin={"0 auto"}
@@ -16,49 +16,49 @@ export const CarImages = () => {
       <Heading size={"md"}>Fotos</Heading>
       <Flex gap={"5px"} wrap={"wrap"}>
         <Flex
-          width={"90px"}
-          height={"90px"}
-          bg={"#E9ECEF"}
+          width={["90px","80px"]}
+          height={["90px","80px"]}
+          bg={"grey.7"}
           borderRadius={"5px"}
         >
           <Image src={car} width={"100%"} height={"60%"} margin={"auto"} />
         </Flex>
         <Flex
-          width={"90px"}
-          height={"90px"}
-          bg={"#E9ECEF"}
+          width={["90px","80px"]}
+          height={["90px","80px"]}
+          bg={"grey.7"}
           borderRadius={"5px"}
         >
           <Image src={car} width={"100%"} height={"60%"} margin={"auto"} />
         </Flex>
         <Flex
-          width={"90px"}
-          height={"90px"}
-          bg={"#E9ECEF"}
+          width={["90px","80px"]}
+          height={["90px","80px"]}
+          bg={"grey.7"}
           borderRadius={"5px"}
         >
           <Image src={car} width={"100%"} height={"60%"} margin={"auto"} />
         </Flex>
         <Flex
-          width={"90px"}
-          height={"90px"}
-          bg={"#E9ECEF"}
+          width={["90px","80px"]}
+          height={["90px","80px"]}
+          bg={"grey.7"}
           borderRadius={"5px"}
         >
           <Image src={car} width={"100%"} height={"60%"} margin={"auto"} />
         </Flex>
         <Flex
-          width={"90px"}
-          height={"90px"}
-          bg={"#E9ECEF"}
+          width={["90px","80px"]}
+          height={["90px","80px"]}
+          bg={"grey.7"}
           borderRadius={"5px"}
         >
           <Image src={car} width={"100%"} height={"60%"} margin={"auto"} />
         </Flex>
         <Flex
-          width={"90px"}
-          height={"90px"}
-          bg={"#E9ECEF"}
+          width={["90px","80px"]}
+          height={["90px","80px"]}
+          bg={"grey.7"}
           borderRadius={"5px"}
         >
           <Image src={car} width={"100%"} height={"60%"} margin={"auto"} />

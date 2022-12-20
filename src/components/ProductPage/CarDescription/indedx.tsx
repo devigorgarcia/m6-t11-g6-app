@@ -3,8 +3,8 @@ import { Flex, Heading, Text } from "@chakra-ui/react";
 export const CarDescription = () => {
   return (
     <Flex
-      bg="#F8F9FA"
-      width={"90%"}
+      bg="grey.9"
+      width={["90%","70%"]}
       height={"350px"}
       margin={"0 auto"}
       flexDirection={"column"}

@@ -20,7 +20,7 @@ export const MenuItem = ({
         alignItems="center"
         fontSize={["18px", "17px"]}
         gap="2"
-        color={{ base: highlight ? "blue.900" : "gray.900" }}
+        color={{ base: highlight ? "blue.900" : "grey.900" }}
         _hover={{ color: "brand.1" }}
         {...rest}
       >

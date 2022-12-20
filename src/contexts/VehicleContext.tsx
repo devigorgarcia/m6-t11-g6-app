@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { createContext } from "react";
 import { api } from "../api";
 import { ProviderData } from "../interfaces/provider.interface";
@@ -18,19 +18,24 @@ export const VehicleProvider = ({ children }: ProviderData) => {
 
   api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
+  const [vehicles, setVehicles] = useState<ICreateVehicleData[]>([] as ICreateVehicleData[])
+
   const createVehicle = async (data: ICreateVehicleData) => {
     await api
       .post("/vehicles", data)
       .then((resp) => {
         onCloseCreate();
         onOpenSucess();
-        console.log(resp);
       })
       .catch((err) => console.log(err));
   };
 
+  const getVehicles = async () =>{
+    await api.get("/vehicles").then(res=>{setVehicles(res.data)})
+  }
+
   return (
-    <VehicleContext.Provider value={{ createVehicle }}>
+    <VehicleContext.Provider value={{ createVehicle, getVehicles, vehicles }}>
       {children}
     </VehicleContext.Provider>
   );

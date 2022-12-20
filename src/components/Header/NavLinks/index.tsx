@@ -63,7 +63,7 @@ export const NavLinks = ({ isOpen }: NavLinksProps) => {
                     {avatar}
                   </Text>
                 </Flex>
-                <MenuButton fontSize="16px" color="gray.2">
+                <MenuButton fontSize="16px" color="grey.2">
                   {name}
                 </MenuButton>
               </Flex>

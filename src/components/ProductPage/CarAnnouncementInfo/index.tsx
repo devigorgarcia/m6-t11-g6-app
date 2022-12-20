@@ -3,8 +3,8 @@ import { Button, Flex, Heading, HStack, Tag, Text } from "@chakra-ui/react";
 export const CarAnnouncementInfo = () => {
   return (
     <Flex
-      bg="#F8F9FA"
-      width={"90%"}
+      bg="grey.9"
+      width={["90%", "70%"]}
       height={"350px"}
       margin={"0 auto"}
       flexDirection={"column"}
@@ -26,9 +26,7 @@ export const CarAnnouncementInfo = () => {
       <Text fontWeight={"700"} fontSize={"lg"}>
         R$ 00.000,00
       </Text>
-      <Button bg={"#4529E6"} color={"white"} fontSize={"lg"}>
-        Comprar
-      </Button>
+      <Button variant="outline2">Comprar</Button>
     </Flex>
   );
 };
