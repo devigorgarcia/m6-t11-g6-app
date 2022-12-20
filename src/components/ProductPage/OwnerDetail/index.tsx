@@ -8,7 +8,7 @@ export const ProductPageOwnerDetail = () => {
   
   return (
     <Flex
-      bg="#F8F9FA"
+      bg="grey.9"
       width={"90%"}
       height={"350px"}
       margin={"0 auto"}
@@ -37,7 +37,7 @@ export const ProductPageOwnerDetail = () => {
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry's
       </Text>
-      <Button bg={"black"} color={"white"} width={[""]}>
+      <Button variant="grey1" width={""}>
         Ver todos os anúncios
       </Button>
     </Flex>

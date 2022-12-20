@@ -23,16 +23,18 @@ export const VehicleProvider = ({ children }: ProviderData) => {
 
   api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
+  const [vehicles, setVehicles] = useState<ICreateVehicleData[]>([] as ICreateVehicleData[])
+
   const createVehicle = async (data: ICreateVehicleData) => {
     await api
       .post("/vehicles", data)
       .then((resp) => {
         onCloseCreate();
         onOpenSucess();
-        console.log(resp);
       })
       .catch((err) => console.log(err));
   };
+
 
   const profileVehicle = async (vehicleId: string) => {
     await api
@@ -41,10 +43,12 @@ export const VehicleProvider = ({ children }: ProviderData) => {
       .catch((error) => console.log(error));
   };
 
+  const getVehicles = async () =>{
+    await api.get("/vehicles").then(res=>{setVehicles(res.data)})
+  }
+
   return (
-    <VehicleContext.Provider
-      value={{ createVehicle, profileVehicle, vehicleInfo }}
-    >
+    <VehicleContext.Provider value={{ createVehicle, getVehicles, vehicles, vehicleInfo }}>
       {children}
     </VehicleContext.Provider>
   );

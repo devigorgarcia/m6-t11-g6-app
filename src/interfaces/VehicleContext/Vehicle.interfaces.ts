@@ -2,6 +2,8 @@ export interface VehicleContextData {
   createVehicle: (data: ICreateVehicleData) => void;
   profileVehicle: (vehicleId: string) => Promise<void>;
   vehicleInfo: ICreateVehicleData;
+  getVehicles: () => Promise<void>;
+  vehicles: ICreateVehicleData[];
 }
 
 export interface ICreateVehicleData {
