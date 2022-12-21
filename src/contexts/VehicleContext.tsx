@@ -34,7 +34,6 @@ export const VehicleProvider = ({ children }: ProviderData) => {
 
   const [owner, setOwner] = useState<IUserOwner>({} as IUserOwner);
 
-
   const createVehicle = async (data: ICreateVehicleData) => {
     await api
       .post("/vehicles", data)
@@ -45,9 +44,9 @@ export const VehicleProvider = ({ children }: ProviderData) => {
       .catch((err) => console.log(err));
   };
 
-  const profileVehicle = async (vehicleId: string) => {
+  const profileVehicle = async (id: string) => {
     await api
-      .get(`/vehicles/${vehicleId}`)
+      .get(`/vehicles/${id}`)
       .then((resp) => {
         setVehicleInfo(resp.data);
         setOwner(resp.data.user);
@@ -61,7 +60,6 @@ export const VehicleProvider = ({ children }: ProviderData) => {
       setVehicles(res.data);
     });
   };
-
 
   const updateVehicle = async (data: ICreateVehicleData, vehicleId: string) => {
     await api
@@ -88,7 +86,6 @@ export const VehicleProvider = ({ children }: ProviderData) => {
     getAllVehicles();
   }, []);
 
-
   return (
     <VehicleContext.Provider
       value={{
@@ -102,7 +99,6 @@ export const VehicleProvider = ({ children }: ProviderData) => {
         setCarFilter,
         carFilter,
         owner,
-
       }}
     >
       {children}

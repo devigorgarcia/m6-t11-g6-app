@@ -153,9 +153,9 @@ export const theme = extendTheme({
           },
         },
         brandOpacity: {
-          bg: "#EDEAFD",
+          bg: "#FDFDFD",
           color: "#4529E6",
-          border: "1.5px solid #EDEAFD",
+          border: "1.5px solid #4529E6",
           borderRadius: "4px",
           fontFamily: "Inter",
           fontWeight: "600",

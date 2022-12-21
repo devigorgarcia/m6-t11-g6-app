@@ -5,14 +5,13 @@ import { Header } from "../../components/Header";
 import { HeaderSlogan } from "../../components/HeaderSlogan";
 import { ShowCaseBikes } from "../../components/ShowCaseBikes";
 import { ShowCaseCars } from "../../components/ShowCaseCars";
-import { VehicleCard } from "../../components/VehicleCard";
 import { VehicleContext } from "../../contexts/VehicleContext";
-import { ICreateVehicleData } from "../../interfaces/VehicleContext/Vehicle.interfaces";
+import { IVehicleProfileData } from "../../interfaces/VehicleContext/Vehicle.interfaces";
 
 export function Home() {
   const { allVehicles, carFilter } = useContext(VehicleContext);
-  const [cars, setCars] = useState<ICreateVehicleData[]>([]);
-  const [bikes, setBikes] = useState<ICreateVehicleData[]>([]);
+  const [cars, setCars] = useState<IVehicleProfileData[]>([]);
+  const [bikes, setBikes] = useState<IVehicleProfileData[]>([]);
 
   useEffect(() => {
     filterVehicles();

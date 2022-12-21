@@ -5,6 +5,10 @@ export interface UserContextData {
   userProfile: UserProfileData;
 }
 
+export interface IUserData {
+  user: UserProfileData
+}
+
 export interface UserProfileData {
   id: string;
   name: string;

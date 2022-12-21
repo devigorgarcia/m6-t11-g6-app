@@ -6,7 +6,7 @@ import { theme } from "./styles/theme";
 import { LoginProvider } from "./contexts/loginContext";
 import { VehicleProvider } from "./contexts/VehicleContext";
 import { ModalProvider } from "./contexts/ModalContext";
-import { UserProvider } from "./contexts/UserContext";
+import { UserProvider } from "./contexts/userContext";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>

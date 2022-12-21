@@ -1,13 +1,13 @@
 import { UserVehicleData } from "./../UserContext/UserContext.interfaces";
 export interface VehicleContextData {
   createVehicle: (data: ICreateVehicleData) => void;
-  profileVehicle: (vehicleId: string) => Promise<void>;
+  profileVehicle: (id: string) => Promise<void>;
   vehicleInfo: ICreateVehicleData;
   getVehicles: () => Promise<void>;
   vehicles: ICreateVehicleData[];
 
   updateVehicle: (data: ICreateVehicleData, vehicleId: string) => Promise<void>;
-  allVehicles: ICreateVehicleData[];
+  allVehicles: IVehicleProfileData[];
   setCarFilter: React.Dispatch<React.SetStateAction<boolean | null>>;
   carFilter: boolean | null;
 
@@ -15,9 +15,9 @@ export interface VehicleContextData {
 }
 
 export interface IUserOwner {
+  id: string;
   name: string;
   descripiton: string;
-
 }
 
 export interface ICreateVehicleData {
