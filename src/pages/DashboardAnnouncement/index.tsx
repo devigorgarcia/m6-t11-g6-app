@@ -1,8 +1,11 @@
 import { Button } from "@chakra-ui/react";
 import { useContext } from "react";
+import { UserSectionDash } from "../../components/DashboardAnnouncement/UserSectionDash";
+import { Header } from "../../components/Header";
 import { CreateVehicleModal } from "../../components/Modals/CreateVehicleModal";
 import { EditVehicleModal } from "../../components/Modals/EditVehicleModal";
 import { SucessCreateModal } from "../../components/Modals/SucessModal";
+
 import { ModalContext } from "../../contexts/ModalContext";
 
 export const DashboardAnnouncementPage = () => {
@@ -12,10 +15,8 @@ export const DashboardAnnouncementPage = () => {
 
   return (
     <>
-      <h1>Dashboard</h1>
-      <Button onClick={onOpenCreate}>Criar</Button>
-      <Button onClick={onOpenEdit}>Editar</Button>
-      <Button>Deletar</Button>
+      <Header />
+      <UserSectionDash/>
       <CreateVehicleModal />
       <SucessCreateModal />
       <EditVehicleModal productId={productId} />
