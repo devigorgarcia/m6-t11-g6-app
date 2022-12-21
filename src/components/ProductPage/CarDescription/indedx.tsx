@@ -1,6 +1,7 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
+import { ICarDescription } from "../../../interfaces/VehicleContext/Vehicle.interfaces";
 
-export const CarDescription = () => {
+export const CarDescription = ({description}: ICarDescription) => {
   return (
     <Flex
       bg="grey.9"
@@ -14,10 +15,7 @@ export const CarDescription = () => {
     >
       <Heading size={"md"}>Descrição</Heading>
       <Text>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
+        {description}
       </Text>
     </Flex>
   );

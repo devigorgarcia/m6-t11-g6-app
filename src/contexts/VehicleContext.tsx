@@ -4,6 +4,7 @@ import { api } from "../api";
 import { ProviderData } from "../interfaces/provider.interface";
 import {
   ICreateVehicleData,
+  IUserOwner,
   VehicleContextData,
 } from "../interfaces/VehicleContext/Vehicle.interfaces";
 import { ModalContext } from "./ModalContext";
@@ -23,7 +24,10 @@ export const VehicleProvider = ({ children }: ProviderData) => {
 
   api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-  const [vehicles, setVehicles] = useState<ICreateVehicleData[]>([] as ICreateVehicleData[])
+  const [vehicles, setVehicles] = useState<ICreateVehicleData[]>(
+    [] as ICreateVehicleData[]
+  );
+  const [owner, setOwner] = useState<IUserOwner>({} as IUserOwner);
 
   const createVehicle = async (data: ICreateVehicleData) => {
     await api
@@ -35,20 +39,34 @@ export const VehicleProvider = ({ children }: ProviderData) => {
       .catch((err) => console.log(err));
   };
 
-
   const profileVehicle = async (vehicleId: string) => {
     await api
       .get(`/vehicles/${vehicleId}`)
-      .then((resp) => setVehicleInfo(resp.data))
+      .then((resp) => {
+        setVehicleInfo(resp.data);
+        setOwner(resp.data.user);
+        return resp.data;
+      })
       .catch((error) => console.log(error));
   };
 
-  const getVehicles = async () =>{
-    await api.get("/vehicles").then(res=>{setVehicles(res.data)})
-  }
+  const getVehicles = async () => {
+    await api.get("/vehicles").then((res) => {
+      setVehicles(res.data);
+    });
+  };
 
   return (
-    <VehicleContext.Provider value={{ createVehicle, getVehicles, vehicles, vehicleInfo }}>
+    <VehicleContext.Provider
+      value={{
+        createVehicle,
+        profileVehicle,
+        getVehicles,
+        vehicles,
+        vehicleInfo,
+        owner,
+      }}
+    >
       {children}
     </VehicleContext.Provider>
   );

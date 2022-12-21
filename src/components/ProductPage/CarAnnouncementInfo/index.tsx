@@ -1,6 +1,7 @@
 import { Button, Flex, Heading, HStack, Tag, Text } from "@chakra-ui/react";
+import { IInfoVehicle } from "../../../interfaces/VehicleContext/Vehicle.interfaces";
 
-export const CarAnnouncementInfo = () => {
+export const CarAnnouncementInfo = ({title, year, price, km}: IInfoVehicle) => {
   return (
     <Flex
       bg="grey.9"
@@ -13,18 +14,18 @@ export const CarAnnouncementInfo = () => {
       borderRadius={"5px"}
     >
       <Heading size={"lg"}>
-        Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200{" "}
+        {title}
       </Heading>
       <HStack spacing={"4"}>
         <Tag size={"lg"} variant="solid" bg={"#EDEAFD"} color={"#4529E6"}>
-          2013
+          {year}
         </Tag>
         <Tag size={"lg"} variant="solid" bg={"#EDEAFD"} color={"#4529E6"}>
-          0 KM
+          {km} KM
         </Tag>
       </HStack>
       <Text fontWeight={"700"} fontSize={"lg"}>
-        R$ 00.000,00
+        R$ {price},00
       </Text>
       <Button variant="outline2">Comprar</Button>
     </Flex>

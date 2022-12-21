@@ -4,6 +4,12 @@ export interface VehicleContextData {
   vehicleInfo: ICreateVehicleData;
   getVehicles: () => Promise<void>;
   vehicles: ICreateVehicleData[];
+  owner: IUserOwner;
+}
+
+export interface IUserOwner {
+  name: string;
+  descripiton: string;
 }
 
 export interface ICreateVehicleData {
@@ -20,4 +26,36 @@ export interface ICreateVehicleData {
   }[];
   isActive: boolean;
   isCar: boolean;
+  user: IUserOwner;
+  Comment: IComment;
+}
+
+export interface IComment {
+  content: string;
+  createdAt: string;
+  userId: string;
+  vehicleId: string;
+}
+
+export interface IIComments {
+  comments: IComment;
+}
+
+export interface IOwnerData {
+  owner: IUserOwner;
+}
+
+export interface IImg {
+  image?: string;
+}
+
+export interface ICarDescription {
+  description: string;
+}
+
+export interface IInfoVehicle {
+  title: string;
+  price: number;
+  km: number;
+  year: number;
 }
