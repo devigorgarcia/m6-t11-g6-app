@@ -4,6 +4,7 @@ import { api } from "../api";
 import { ProviderData } from "../interfaces/provider.interface";
 import {
   ICreateVehicleData,
+  IUserOwner,
   VehicleContextData,
 } from "../interfaces/VehicleContext/Vehicle.interfaces";
 import { ModalContext } from "./ModalContext";
@@ -31,6 +32,9 @@ export const VehicleProvider = ({ children }: ProviderData) => {
     [] as ICreateVehicleData[]
   );
 
+  const [owner, setOwner] = useState<IUserOwner>({} as IUserOwner);
+
+
   const createVehicle = async (data: ICreateVehicleData) => {
     await api
       .post("/vehicles", data)
@@ -44,7 +48,11 @@ export const VehicleProvider = ({ children }: ProviderData) => {
   const profileVehicle = async (vehicleId: string) => {
     await api
       .get(`/vehicles/${vehicleId}`)
-      .then((resp) => setVehicleInfo(resp.data))
+      .then((resp) => {
+        setVehicleInfo(resp.data);
+        setOwner(resp.data.user);
+        return resp.data;
+      })
       .catch((error) => console.log(error));
   };
 
@@ -53,6 +61,7 @@ export const VehicleProvider = ({ children }: ProviderData) => {
       setVehicles(res.data);
     });
   };
+
 
   const updateVehicle = async (data: ICreateVehicleData, vehicleId: string) => {
     await api
@@ -79,6 +88,7 @@ export const VehicleProvider = ({ children }: ProviderData) => {
     getAllVehicles();
   }, []);
 
+
   return (
     <VehicleContext.Provider
       value={{
@@ -91,6 +101,8 @@ export const VehicleProvider = ({ children }: ProviderData) => {
         allVehicles,
         setCarFilter,
         carFilter,
+        owner,
+
       }}
     >
       {children}

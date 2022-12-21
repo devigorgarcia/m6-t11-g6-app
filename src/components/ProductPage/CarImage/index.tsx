@@ -1,7 +1,7 @@
 import { Flex, Image } from "@chakra-ui/react";
-import car from "../../../assets/car.jpg";
+import { IImg } from "../../../interfaces/VehicleContext/Vehicle.interfaces";
 
-export const CarImage = () => {
+export const CarImage = ({image}:IImg) => {
   return (
     <Flex
       bg={"grey.10"}
@@ -10,7 +10,7 @@ export const CarImage = () => {
       margin={["10% auto 0 auto"]}
       borderRadius={"5px"}
     >
-      <Image src={car} minWidth="300px" width="80%" margin={"auto auto"} />
+      <Image src={image} minWidth="300px" width="60%" margin={"auto auto"} />
     </Flex>
   );
 };

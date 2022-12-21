@@ -10,11 +10,23 @@ import { useContext, useEffect } from "react";
 import { VehicleContext } from "../../contexts/VehicleContext";
 
 export const ProductComponent = () => {
-  const { getVehicles, vehicles } = useContext(VehicleContext);
 
+  const { profileVehicle, vehicleInfo, owner } = useContext(VehicleContext);
+
+  const vehicleId = "e2c62435-b9b7-401d-9daf-dafe3abb9b6f";
   useEffect(() => {
-    getVehicles();
+    profileVehicle(vehicleId);
   }, []);
+
+  const carImage = vehicleInfo.frontImg;
+  const carTitle = vehicleInfo.title;
+  const carDescription = vehicleInfo.description;
+  const carPrice = vehicleInfo.price;
+  const carKm = vehicleInfo.km;
+  const carYear = vehicleInfo.year;
+  const carComments = vehicleInfo.Comment;
+  const carUser = vehicleInfo.user;
+
 
   return (
     <Flex
@@ -26,11 +38,16 @@ export const ProductComponent = () => {
       ]}
     >
       <Flex flexDirection={["column"]} gap={"20px"}>
-        <CarImage />
+        <CarImage image={carImage} />
 
-        <CarAnnouncementInfo />
+        <CarAnnouncementInfo
+          title={carTitle}
+          price={carPrice}
+          km={carKm}
+          year={carYear}
+        />
 
-        <CarDescription />
+        <CarDescription description={carDescription} />
         <Flex
           gap={"20px"}
           display={["flex", "flex", "flex", "none"]}
@@ -38,10 +55,10 @@ export const ProductComponent = () => {
         >
           <CarImages />
 
-          <ProductPageOwnerDetail />
+          <ProductPageOwnerDetail owner={carUser}/>
         </Flex>
 
-        <Comments />
+        <Comments comments={carComments} />
 
         <CommentBox />
       </Flex>
@@ -53,7 +70,7 @@ export const ProductComponent = () => {
       >
         <CarImages />
 
-        <ProductPageOwnerDetail />
+        <ProductPageOwnerDetail owner={carUser}/>
       </Flex>
     </Flex>
   );
