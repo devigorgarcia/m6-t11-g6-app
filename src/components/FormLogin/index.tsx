@@ -21,6 +21,7 @@ interface ILoginData {
 
 export const FormLogin = () => {
   const { login } = useContext(LoginContext);
+
   const schema = yup.object().shape({
     email: yup
       .string()
@@ -37,7 +38,7 @@ export const FormLogin = () => {
   const onSubmit = (data: ILoginData) => {
     login(data);
   };
-  
+
   return (
     <Flex
       flexDir={["column"]}
