@@ -63,6 +63,7 @@ export const EditVehicleForm = ({ vehicleInfo }: IEditModalProps) => {
       isActive: isPublic,
     };
 
+
     updateVehicle(fulLData, vehicleInfo.id);
   };
 

@@ -15,7 +15,6 @@ export const LoginProvider = ({ children }: ProviderData) => {
   const login = async (data: ILoginData) => {
     try {
       const response = await api.post("/login", data);
-      console.log(response);
       localStorage.setItem("@MotorShop:Token", response.data.token);
       navigate("/dashboardAnnouncement");
       toast.success("Login Realizado");

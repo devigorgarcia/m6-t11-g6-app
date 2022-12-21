@@ -11,7 +11,7 @@ import { ModalContext } from "../../contexts/ModalContext";
 export const DashboardAnnouncementPage = () => {
   const { onOpenCreate, onOpenEdit } = useContext(ModalContext);
 
-  const productId = "f5636cdb-0966-4e2f-86da-316e5a37a05e";
+  const productId = "e2c62435-b9b7-401d-9daf-dafe3abb9b6f";
 
   return (
     <>
