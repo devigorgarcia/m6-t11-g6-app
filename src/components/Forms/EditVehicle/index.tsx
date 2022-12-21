@@ -21,7 +21,7 @@ import { ICreateVehicleData } from "../../../interfaces/VehicleContext/Vehicle.i
 import { IEditModalProps } from "../../../interfaces/Modals/modals.interface";
 
 export const EditVehicleForm = ({ vehicleInfo }: IEditModalProps) => {
-  const {} = useContext(VehicleContext);
+  const { updateVehicle } = useContext(VehicleContext);
 
   const actualGalleryArray = () => {
     let newArray = [];
@@ -62,8 +62,10 @@ export const EditVehicleForm = ({ vehicleInfo }: IEditModalProps) => {
       isCar: isCar,
       isActive: isPublic,
     };
-  };
 
+
+    updateVehicle(fulLData, vehicleInfo.id);
+  };
 
   const addInputField = () => {
     const newInput = "";

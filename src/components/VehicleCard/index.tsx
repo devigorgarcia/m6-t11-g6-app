@@ -1,58 +1,76 @@
-import { Card, Image, Stack, Heading, Text, Flex, Avatar, CardFooter} from "@chakra-ui/react"
+import {
+  Card,
+  Image,
+  Heading,
+  Text,
+  Flex,
+  Avatar,
+  CardFooter,
+  VStack,
+} from "@chakra-ui/react";
+import { IVehicleProfileData } from "../../interfaces/VehicleContext/Vehicle.interfaces";
 
-export function VehicleCard() {
-    return (
-        <Card maxW="sm">
-        <Image
-          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          alt="Green double couch with wooden legs"
-        />
-        <Stack mt="6" spacing="3">
-          <Heading size="md" color="grey.1" noOfLines={1}>
-            Product title stays here - max 1 line Product title stays here -
-            maximum 1 line
-          </Heading>
-          <Text fontStyle="h7" noOfLines={2}>
-            This sofa is perfect for modern tropical spaces, baroque inspired
-            spaces, earthy toned spaces and for people who love a chic design
-            with a sprinkle of vintage design.
-          </Text>
-          <Flex direction="row" align="center">
-            <Avatar size="sm" name="Samuel Leao" marginRight="10px" />
-            <Text>Samuel Leão</Text>
-          </Flex>
-        </Stack>
-        <CardFooter justify="space-between" padding="0" marginTop={3}>
-          <Flex justify="space-between" w="35%">
-            <Flex
+interface IVehicleProps {
+  data: IVehicleProfileData;
+}
+
+export function VehicleCard({ data }: IVehicleProps) {
+  const { price, km } = data;
+  let numberPrice = +price;
+  let numberKm = +km;
+
+  return (
+    <Card minW={"350px"} maxW="350px" flex="1" p="1rem">
+      <Image src={data.frontImg} alt="Green double couch with wooden legs" />
+      <VStack mt="8" spacing="3">
+        <Heading size="md" color="grey.1" noOfLines={1}>
+          {data.title}
+        </Heading>
+        <Text noOfLines={2}>{data.description}</Text>
+        <Flex alignSelf="flex-start" direction="row" align="center">
+          <Avatar size="sm" name={data.user?.name} marginRight="10px" />
+          <Text>{data.user?.name}</Text>
+        </Flex>
+      </VStack>
+      <CardFooter justify="space-between" padding="0" marginTop={8}>
+        <Flex justify="space-between">
+          <Flex gap="1rem" justify="center" align="center">
+            <Text
               bg="brand.4"
+              color="brand.1"
               borderRadius="6px"
-              w="50px"
-              h="30px"
-              justify="center"
-              align="center"
+              p={["4px 8px"]}
+              fontSize="14px"
+              fontWeight="500"
+              fontFamily={"Inter"}
             >
-              <Text textStyle="h7" color="brand.1">
-                0 KM
-              </Text>
-            </Flex>
-            <Flex
+              {numberKm.toLocaleString("pt-br")} KM
+            </Text>
+            <Text
               bg="brand.4"
+              color="brand.1"
               borderRadius="6px"
-              w="50px"
-              h="30px"
-              justify="center"
-              align="center"
+              p={["4px 8px"]}
+              fontSize="14px"
+              fontWeight="500"
+              fontFamily={"Inter"}
             >
-              <Text textStyle="h7" color="brand.1">
-                2019
-              </Text>
-            </Flex>
+              {data.year}
+            </Text>
           </Flex>
-          <Text color="grey.1" textStyle="h6">
-            R$ 00.000,00
-          </Text>
-        </CardFooter>
-      </Card>
-    )
+        </Flex>
+        <Text
+          fontSize="16px"
+          fontWeight="500"
+          fontFamily={"Inter"}
+          color="grey.1"
+        >
+          {numberPrice.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}
+        </Text>
+      </CardFooter>
+    </Card>
+  );
 }

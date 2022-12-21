@@ -10,15 +10,13 @@ import { useContext, useEffect } from "react";
 import { VehicleContext } from "../../contexts/VehicleContext";
 
 export const ProductComponent = () => {
+
   const { profileVehicle, vehicleInfo, owner } = useContext(VehicleContext);
 
   const vehicleId = "e2c62435-b9b7-401d-9daf-dafe3abb9b6f";
   useEffect(() => {
     profileVehicle(vehicleId);
   }, []);
-
-  // console.log(vehicleInfo.user)
-  // console.log(owner)
 
   const carImage = vehicleInfo.frontImg;
   const carTitle = vehicleInfo.title;
@@ -28,6 +26,7 @@ export const ProductComponent = () => {
   const carYear = vehicleInfo.year;
   const carComments = vehicleInfo.Comment;
   const carUser = vehicleInfo.user;
+
 
   return (
     <Flex

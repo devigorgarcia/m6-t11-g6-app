@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
 import { api } from "../api";
 import { ProviderData } from "../interfaces/provider.interface";
@@ -19,6 +19,10 @@ export const VehicleProvider = ({ children }: ProviderData) => {
   const [vehicleInfo, setVehicleInfo] = useState<ICreateVehicleData>(
     {} as ICreateVehicleData
   );
+  const [allVehicles, setAllvehicles] = useState<ICreateVehicleData[]>(
+    [] as ICreateVehicleData[]
+  );
+  const [carFilter, setCarFilter] = useState<boolean | null>(null);
 
   const token = localStorage.getItem("@MotorShop:Token");
 
@@ -27,7 +31,9 @@ export const VehicleProvider = ({ children }: ProviderData) => {
   const [vehicles, setVehicles] = useState<ICreateVehicleData[]>(
     [] as ICreateVehicleData[]
   );
+
   const [owner, setOwner] = useState<IUserOwner>({} as IUserOwner);
+
 
   const createVehicle = async (data: ICreateVehicleData) => {
     await api
@@ -56,15 +62,47 @@ export const VehicleProvider = ({ children }: ProviderData) => {
     });
   };
 
+
+  const updateVehicle = async (data: ICreateVehicleData, vehicleId: string) => {
+    await api
+      .patch(`/vehicles/${vehicleId}`, data)
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const getAllVehicles = async () => {
+    await api
+      .get("/vehicles")
+      .then((resp) => {
+        console.log(resp);
+        setAllvehicles(resp.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getAllVehicles();
+  }, []);
+
+
   return (
     <VehicleContext.Provider
       value={{
         createVehicle,
-        profileVehicle,
         getVehicles,
         vehicles,
         vehicleInfo,
+        profileVehicle,
+        updateVehicle,
+        allVehicles,
+        setCarFilter,
+        carFilter,
         owner,
+
       }}
     >
       {children}
