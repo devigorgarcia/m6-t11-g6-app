@@ -1,3 +1,5 @@
+import { IVehicleProfileData } from "../VehicleContext/Vehicle.interfaces";
+
 export interface IUserContext {
   getUsers: () => void;
   getUser: (userId: string) => void;
@@ -12,6 +14,7 @@ export interface IUser {
   cpf: string;
   fone: string;
   birthday: string;
-  description: string;
+  descripiton: string;
   is_admin: boolean;
+  vehicle?: IVehicleProfileData[];
 }

@@ -8,14 +8,17 @@ import { CommentBox } from "./CommentBox";
 import { CarImage } from "./CarImage";
 import { useContext, useEffect } from "react";
 import { VehicleContext } from "../../contexts/VehicleContext";
+import { useParams } from "react-router-dom";
 
 export const ProductComponent = () => {
+  const { id } = useParams();
 
   const { profileVehicle, vehicleInfo, owner } = useContext(VehicleContext);
 
-  const vehicleId = "e2c62435-b9b7-401d-9daf-dafe3abb9b6f";
   useEffect(() => {
-    profileVehicle(vehicleId);
+    if (id) {
+      profileVehicle(id);
+    }
   }, []);
 
   const carImage = vehicleInfo.frontImg;
@@ -26,7 +29,6 @@ export const ProductComponent = () => {
   const carYear = vehicleInfo.year;
   const carComments = vehicleInfo.Comment;
   const carUser = vehicleInfo.user;
-
 
   return (
     <Flex
@@ -55,7 +57,7 @@ export const ProductComponent = () => {
         >
           <CarImages />
 
-          <ProductPageOwnerDetail owner={carUser}/>
+          <ProductPageOwnerDetail owner={carUser} />
         </Flex>
 
         <Comments comments={carComments} />
@@ -70,7 +72,7 @@ export const ProductComponent = () => {
       >
         <CarImages />
 
-        <ProductPageOwnerDetail owner={carUser}/>
+        <ProductPageOwnerDetail owner={carUser} />
       </Flex>
     </Flex>
   );

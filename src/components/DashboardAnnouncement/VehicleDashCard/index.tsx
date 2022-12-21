@@ -8,16 +8,14 @@ import {
   CardFooter,
   VStack,
 } from "@chakra-ui/react";
-import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../contexts/userContext";
-import { IVehicleProfileData } from "../../interfaces/VehicleContext/Vehicle.interfaces";
 
 interface IVehicleProps {
-  data: IVehicleProfileData;
+  user: any;
+  data: any;
 }
 
-export function VehicleCard({ data }: IVehicleProps) {
+export function VehicleCardDash({ data, user }: IVehicleProps) {
   const navigate = useNavigate();
 
   const { price, km } = data;
@@ -25,7 +23,7 @@ export function VehicleCard({ data }: IVehicleProps) {
   let numberKm = +km;
 
   const handleNavigate = (id: string) => {
-    navigate(`product/${id}`);
+    navigate(`/product/${id}`);
   };
 
   return (
@@ -44,8 +42,8 @@ export function VehicleCard({ data }: IVehicleProps) {
         </Heading>
         <Text noOfLines={2}>{data.description}</Text>
         <Flex alignSelf="flex-start" direction="row" align="center">
-          <Avatar size="sm" name={data.user?.name} marginRight="10px" />
-          <Text>{data.user?.name}</Text>
+          <Avatar size="sm" name={user.name} marginRight="10px" />
+          <Text>{user.name}</Text>
         </Flex>
       </VStack>
       <CardFooter justify="space-between" padding="0" marginTop={8}>

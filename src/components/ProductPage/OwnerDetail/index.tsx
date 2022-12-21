@@ -1,18 +1,23 @@
 import { Button, Flex, Text } from "@chakra-ui/react";
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../../contexts/userContext";
-import { VehicleContext } from "../../../contexts/VehicleContext";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { IOwnerData } from "../../../interfaces/VehicleContext/Vehicle.interfaces";
 
 export const ProductPageOwnerDetail = ({ owner }: IOwnerData) => {
   const [avatar, setAvatar] = useState("");
 
+  const navigate = useNavigate();
+  
   if (owner && avatar === "") {
     const name = owner.name;
     const fl = name.split(" ")[0][0];
     const sl = name.split(" ")[1][0];
     setAvatar(fl + sl);
   }
+
+  const handleNavigate = (userId: string) => {
+    navigate(`/dashboard/${userId}`);
+  };
 
   return (
     <>
@@ -45,10 +50,12 @@ export const ProductPageOwnerDetail = ({ owner }: IOwnerData) => {
           </Text>
           <Text width={"295px"} height={"84px"}>
             {owner.descripiton}
-            {/* Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's */}
           </Text>
-          <Button variant="grey1" width={""}>
+          <Button
+            onClick={() => handleNavigate(owner.id)}
+            variant="grey1"
+            width={""}
+          >
             Ver todos os anúncios
           </Button>
         </Flex>
