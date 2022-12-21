@@ -1,23 +1,20 @@
 import { Route, Routes } from "react-router-dom";
 import { DashboardAnnouncementPage } from "../pages/DashboardAnnouncement";
-import { Login } from "../pages/Login";
+import { Login } from "../pages/Login"
+import {Home} from "../pages/Home"
 import { ProductPage } from "../pages/ProductPage";
-
-export const paths = {
-  login: "/",
-  home: "/home",
-  register: "/register",
-};
 
 export const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Home/>}/>
       <Route
         path="/dashboardAnnouncement"
         element={<DashboardAnnouncementPage />}
       />
       <Route path="/productDetail" element={<ProductPage />} />
+
     </Routes>
   );
 };
