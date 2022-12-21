@@ -62,11 +62,8 @@ export const EditVehicleForm = ({ vehicleInfo }: IEditModalProps) => {
       isCar: isCar,
       isActive: isPublic,
     };
-
-    console.log(fulLData);
   };
 
-  console.log(inputNumber);
 
   const addInputField = () => {
     const newInput = "";

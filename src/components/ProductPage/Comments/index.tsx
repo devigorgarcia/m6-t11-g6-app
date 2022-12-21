@@ -1,7 +1,8 @@
 import { Flex, Heading, Image, Text } from "@chakra-ui/react";
 import bolinha from "../../../assets/bolinha.svg";
+import { IIComments } from "../../../interfaces/VehicleContext/Vehicle.interfaces";
 
-export const Comments = () => {
+export const Comments = ({ comments }: IIComments) => {
   const name1 = "Júlia Lima";
   const firstLetter1 = name1.split(" ")[0][0];
   const secondLetter1 = name1.split(" ")[1][0];
@@ -16,18 +17,18 @@ export const Comments = () => {
   const firstLetter3 = name3.split(" ")[0][0];
   const secondLetter3 = name3.split(" ")[1][0];
   const avatar3 = `${firstLetter3 + secondLetter3}`;
+
   return (
     <Flex
       bg="grey.9"
       width={["90%", "70%"]}
       margin={"0 auto"}
       flexDirection={"column"}
-      alignItems={"center"}
-      justifyContent={"space-evenly"}
+      justifyContent={"flex-start"}
       padding={"2rem"}
       borderRadius={"5px"}
     >
-      <Heading size={"md"} justifyContent={"flex-start"} marginBottom={"25px"}>
+      <Heading size={"md"} justifyContent={"flex-start"} marginBottom={"5%"}>
         Comentários
       </Heading>
       <Flex
@@ -42,7 +43,7 @@ export const Comments = () => {
               w="32px"
               h="32px"
               rounded="full"
-              bg={"random.1"}
+              bg={"#E34D8C"}
               alignItems="center"
               justifyContent="center"
             >
@@ -53,14 +54,9 @@ export const Comments = () => {
           </Flex>
           <Text>{name1}</Text>
           <Image src={bolinha} />
-          <Text color={"grey.3"}>há 3 dias</Text>
+          <Text color={"#868E96"}>há 3 dias</Text>
         </Flex>
-        <Text>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book.
-        </Text>
+        <Text>Adoro dirigir em estradas de montanha com este carro!</Text>
       </Flex>
       <Flex
         flexDirection={"column"}
@@ -74,7 +70,7 @@ export const Comments = () => {
               w="32px"
               h="32px"
               rounded="full"
-              bg="random.4"
+              bg="#7000FF"
               alignItems="center"
               justifyContent="center"
             >
@@ -85,13 +81,10 @@ export const Comments = () => {
           </Flex>
           <Text>{name2}</Text>
           <Image src={bolinha} />
-          <Text color={"grey.3"}>há 7 dias</Text>
+          <Text color={"#868E96"}>há 7 dias</Text>
         </Flex>
         <Text>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book.
+          Eu amei este carro! Ele é tão potente e tem um ótimo sistema de som.
         </Text>
       </Flex>
       <Flex
@@ -106,7 +99,7 @@ export const Comments = () => {
               w="32px"
               h="32px"
               rounded="full"
-              bg="random.9"
+              bg="#153D2E"
               alignItems="center"
               justifyContent="center"
             >
@@ -117,13 +110,10 @@ export const Comments = () => {
           </Flex>
           <Text>{name3}</Text>
           <Image src={bolinha} />
-          <Text color={"grey.3"}>há 1 mês</Text>
+          <Text color={"#868E96"}>há 1 mês</Text>
         </Flex>
         <Text>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book.
+          Eu prefiro carros elétricos porque são mais amigos do ambiente.
         </Text>
       </Flex>
     </Flex>
