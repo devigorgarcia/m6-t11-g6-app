@@ -10,13 +10,11 @@ import { useContext, useEffect } from "react";
 import { VehicleContext } from "../../contexts/VehicleContext";
 
 export const ProductComponent = () => {
-  const { getVehicles,vehicles } = useContext(VehicleContext);
+  const { getVehicles, vehicles } = useContext(VehicleContext);
 
-  useEffect(()=>{
-    getVehicles()
-  },[])
-
-  console.log(vehicles)
+  useEffect(() => {
+    getVehicles();
+  }, []);
 
   return (
     <Flex
