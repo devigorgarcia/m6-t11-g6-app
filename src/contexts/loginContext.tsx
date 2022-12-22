@@ -16,7 +16,7 @@ export const LoginProvider = ({ children }: ProviderData) => {
     try {
       const response = await api.post("/login", data);
       localStorage.setItem("@MotorShop:Token", response.data.token);
-      navigate("/dashboardAnnouncement");
+      navigate("/dashboardAdmin");
       toast.success("Login Realizado");
     } catch (error) {
       toast.error("algo não deu");

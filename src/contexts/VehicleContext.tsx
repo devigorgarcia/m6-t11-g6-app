@@ -5,6 +5,7 @@ import { ProviderData } from "../interfaces/provider.interface";
 import {
   ICreateVehicleData,
   IUserOwner,
+  IVehicleProfileData,
   VehicleContextData,
 } from "../interfaces/VehicleContext/Vehicle.interfaces";
 import { ModalContext } from "./ModalContext";
@@ -14,13 +15,14 @@ export const VehicleContext = createContext<VehicleContextData>(
 );
 
 export const VehicleProvider = ({ children }: ProviderData) => {
-  const { onCloseCreate, onOpenSucess } = useContext(ModalContext);
+  const { onCloseCreate, onOpenSucess, onCloseDelete, onCloseEdit } =
+    useContext(ModalContext);
 
   const [vehicleInfo, setVehicleInfo] = useState<ICreateVehicleData>(
     {} as ICreateVehicleData
   );
-  const [allVehicles, setAllvehicles] = useState<ICreateVehicleData[]>(
-    [] as ICreateVehicleData[]
+  const [allVehicles, setAllvehicles] = useState<IVehicleProfileData[]>(
+    [] as IVehicleProfileData[]
   );
   const [carFilter, setCarFilter] = useState<boolean | null>(null);
 
@@ -86,6 +88,18 @@ export const VehicleProvider = ({ children }: ProviderData) => {
     getAllVehicles();
   }, []);
 
+  const deleteVehicle = async (vehicleId: string) => {
+    console.log(vehicleId);
+    await api
+      .delete(`/vehicles/${vehicleId}`)
+      .then((resp) => {
+        console.log(resp);
+        onCloseDelete();
+        onCloseEdit();
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <VehicleContext.Provider
       value={{
@@ -99,6 +113,7 @@ export const VehicleProvider = ({ children }: ProviderData) => {
         setCarFilter,
         carFilter,
         owner,
+        deleteVehicle,
       }}
     >
       {children}
