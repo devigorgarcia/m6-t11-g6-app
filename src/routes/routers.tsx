@@ -3,6 +3,7 @@ import { DashboardAnnouncementPage } from "../pages/DashboardAnnouncement";
 import { Login } from "../pages/Login";
 import { Home } from "../pages/Home";
 import { ProductPage } from "../pages/ProductPage";
+import { DashboardAdmin } from "../pages/DashboardAdmin";
 
 export const Router = () => {
   return (
@@ -13,6 +14,7 @@ export const Router = () => {
         path="/dashboard/:userId"
         element={<DashboardAnnouncementPage />}
       />
+      <Route path="/dashboardAdmin" element={<DashboardAdmin />} />
       <Route path="/product/:id" element={<ProductPage />} />
     </Routes>
   );

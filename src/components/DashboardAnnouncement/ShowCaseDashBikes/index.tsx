@@ -1,10 +1,11 @@
 import { Flex, Heading, HStack } from "@chakra-ui/react";
 import { IVehicleProfileData } from "../../../interfaces/VehicleContext/Vehicle.interfaces";
+import { VehicleCardAdmin } from "../../DashboardAdmin/UserSectionDash/AdminDetails/VehicleCardAdmin";
 
 import { VehicleCardDash } from "../VehicleDashCard";
 
 export interface ICarsData {
-  user: any;
+  user?: any;
   bikes: IVehicleProfileData[];
 }
 
@@ -16,9 +17,15 @@ export const ShowCaseDashBikes = ({ bikes, user }: ICarsData) => {
       </Heading>
       {bikes.length !== 0 ? (
         <HStack gap={"5"} overflowX="auto">
-          {bikes?.map((bike) => {
-            return <VehicleCardDash key={bike.id} data={bike} user={user} />;
-          })}
+          {user
+            ? bikes?.map((bike) => {
+                return (
+                  <VehicleCardDash key={bike.id} data={bike} user={user} />
+                );
+              })
+            : bikes?.map((bike) => {
+                return <VehicleCardAdmin key={bike.id} data={bike} />;
+              })}
         </HStack>
       ) : (
         <h1>Oi</h1>
