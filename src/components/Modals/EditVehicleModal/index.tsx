@@ -4,7 +4,6 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/react";
@@ -14,16 +13,16 @@ import { VehicleContext } from "../../../contexts/VehicleContext";
 import { EditVehicleForm } from "../../Forms/EditVehicle";
 
 interface EditModalProps {
-  productId: string;
+  vehicleId: string;
 }
 
-export const EditVehicleModal = ({ productId }: EditModalProps) => {
+export const EditVehicleModal = ({ vehicleId }: EditModalProps) => {
   const { isOpenEdit, onCloseEdit } = useContext(ModalContext);
   const { profileVehicle, vehicleInfo } = useContext(VehicleContext);
 
   useEffect(() => {
-    profileVehicle(productId);
-  }, [productId]);
+    profileVehicle(vehicleId);
+  }, [vehicleId]);
 
   return (
     <Modal isOpen={isOpenEdit} onClose={onCloseEdit}>

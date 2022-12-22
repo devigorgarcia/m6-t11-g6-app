@@ -1,20 +1,16 @@
 import { Avatar, Button, Flex, Text } from "@chakra-ui/react";
 import { useContext } from "react";
-import { useParams } from "react-router-dom";
-import { ModalContext } from "../../../contexts/ModalContext";
-import { CreateVehicleModal } from "../../Modals/CreateVehicleModal";
-import { DeleteVehicleModal } from "../../Modals/DeleteVehicleModal";
-import { SucessCreateModal } from "../../Modals/SucessModal";
+import { ModalContext } from "../../../../contexts/ModalContext";
+import { CreateVehicleModal } from "../../../Modals/CreateVehicleModal";
+import { SucessCreateModal } from "../../../Modals/SucessModal";
 
-export const AnnouncementDetails = ({ user }: any) => {
-  const { userId } = useParams();
+export const AdminDetails = ({ user }: any) => {
   const { onOpenCreate } = useContext(ModalContext);
   return (
     <>
       <Flex
         bg="grey.9"
         width={"90%"}
-        height={"350px"}
         margin={"4rem auto"}
         flexDirection={"column"}
         alignItems={"center"}
@@ -47,7 +43,18 @@ export const AnnouncementDetails = ({ user }: any) => {
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's
         </Text>
+        <Button
+          onClick={onOpenCreate}
+          variant="brandOpacity"
+          w={""}
+          alignSelf="flex-start"
+          mt={10}
+        >
+          Criar Anuncio
+        </Button>
       </Flex>
+      <CreateVehicleModal />
+      <SucessCreateModal />
     </>
   );
 };
