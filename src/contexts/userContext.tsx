@@ -1,27 +1,32 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { api } from "../api";
 import { ProviderData } from "../interfaces/provider.interface";
 import {
-  IUser,
-  IUserContext,
-} from "../interfaces/UserInterface/User.interface";
+  UserContextData,
+  UserProfileData,
+} from "../interfaces/UserContext/UserContext.interfaces";
 
-export const UserContext = createContext<IUserContext>({} as IUserContext);
+export const UserContext = createContext<UserContextData>(
+  {} as UserContextData
+);
 
 export const UserProvider = ({ children }: ProviderData) => {
-  const [users, setUsers] = useState<IUser[]>([] as IUser[]);
-  const [user, setUser] = useState<IUser>({} as IUser);
+  const [userProfile, setUserProfile] = useState<UserProfileData>(
+    {} as UserProfileData
+  );
 
-  const getUsers = () => {
-    api.get("/users").then((resp) => setUsers(resp.data));
-  };
-
-  const getUser = (userId: string) => {
-    api.get(`/users/${userId}`).then((resp) => setUser(resp.data));
+  const getUserProfile = async (userId: string) => {
+    await api
+      .get(`/users/${userId}`)
+      .then((resp) => {
+        console.log(resp);
+        setUserProfile(resp.data);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
-    <UserContext.Provider value={{ getUsers, getUser, users, user }}>
+    <UserContext.Provider value={{ getUserProfile, userProfile }}>
       {children}
     </UserContext.Provider>
   );
