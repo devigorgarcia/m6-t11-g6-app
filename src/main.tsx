@@ -4,12 +4,21 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { theme } from "./styles/theme";
 import { LoginProvider } from "./contexts/loginContext";
+import { VehicleProvider } from "./contexts/VehicleContext";
+import { ModalProvider } from "./contexts/ModalContext";
+import { UserProvider } from "./contexts/userContext";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>
     <ChakraProvider resetCSS theme={theme}>
       <LoginProvider>
-        <App />
+        <ModalProvider>
+          <VehicleProvider>
+            <UserProvider>
+              <App />
+            </UserProvider>
+          </VehicleProvider>
+        </ModalProvider>
       </LoginProvider>
     </ChakraProvider>
   </BrowserRouter>

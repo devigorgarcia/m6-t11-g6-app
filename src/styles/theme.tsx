@@ -21,7 +21,7 @@ export const theme = extendTheme({
       9: "#F8F9FA",
       10: "#FDFDFD",
       11: "#FFFFFF",
-      700: "#2C2C2C"
+      700: "#2C2C2C",
     },
     feedbacks: {
       alert1: "#CD2B31",
@@ -153,9 +153,9 @@ export const theme = extendTheme({
           },
         },
         brandOpacity: {
-          bg: "#EDEAFD",
+          bg: "#FDFDFD",
           color: "#4529E6",
-          border: "1.5px solid #EDEAFD",
+          border: "1.5px solid #4529E6",
           borderRadius: "4px",
           fontFamily: "Inter",
           fontWeight: "600",
@@ -173,6 +173,25 @@ export const theme = extendTheme({
             bg: "#FDFDFD",
             border: "1.5px solid #212529",
           },
+        },
+        outlineLight: {
+          bg: "transparent",
+          color: "#FDFDFD",
+          border: "1.5px solid #FDFDFD",
+          borderRadius: "4px",
+          fontFamily: "Inter",
+          fontWeight: "600",
+          fontSize: "16px",
+          _hover: {
+            bg: "#FDFDFD",
+            color: "#212529",
+            border: "1.5px solid #212529",
+          },
+        },
+        outlineLightClicked: {
+          bg: "#FDFDFD",
+          color: "#212529",
+          border: "1.5px solid #212529",
         },
         outline1: {
           bg: "#FDFDFD",
@@ -202,9 +221,9 @@ export const theme = extendTheme({
           },
         },
         outlineBrand: {
-          bg: "#FDFDFD",
+          bg: "#EDEAFD",
           color: "#4529E6",
-          border: "1.5px solid #FDFDFD",
+          border: "1.5px solid #EDEAFD",
           borderRadius: "4px",
           fontFamily: "Inter",
           fontWeight: "600",
