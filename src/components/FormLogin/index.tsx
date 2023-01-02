@@ -13,6 +13,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { useContext } from "react";
 import { LoginContext } from "../../contexts/loginContext";
+import { useNavigate } from "react-router-dom";
 
 interface ILoginData {
   email: string;
@@ -20,6 +21,7 @@ interface ILoginData {
 }
 
 export const FormLogin = () => {
+  const navigate = useNavigate();
   const { login } = useContext(LoginContext);
 
   const schema = yup.object().shape({
@@ -113,7 +115,12 @@ export const FormLogin = () => {
             <Button colorScheme="teal" variant="grey2">
               Ainda não possui conta?
             </Button>
-            <Button width={"100%"} colorScheme="teal" variant="outline1">
+            <Button
+              onClick={() => navigate("/register")}
+              width={"100%"}
+              colorScheme="teal"
+              variant="outline1"
+            >
               Cadastrar
             </Button>
           </Stack>
