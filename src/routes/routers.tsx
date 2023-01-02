@@ -8,6 +8,7 @@ import { DashboardAdmin } from "../pages/DashboardAdmin";
 export const Router = () => {
   return (
     <Routes>
+      <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/" element={<Home />} />
       <Route
@@ -16,6 +17,7 @@ export const Router = () => {
       />
       <Route path="/dashboardAdmin" element={<DashboardAdmin />} />
       <Route path="/product/:id" element={<ProductPage />} />
+
     </Routes>
   );
 };
