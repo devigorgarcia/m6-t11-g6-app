@@ -6,15 +6,17 @@ import {
 } from "../interfaces/LoginContext/context.interfaces";
 import { ProviderData } from "../interfaces/provider.interface";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const LoginContext = createContext<IContextData>({} as IContextData);
 
 export const LoginProvider = ({ children }: ProviderData) => {
+  const navigate = useNavigate();
   const login = async (data: ILoginData) => {
     try {
       const response = await api.post("/login", data);
-      console.log(response);
       localStorage.setItem("@MotorShop:Token", response.data.token);
+      navigate("/dashboardAdmin");
       toast.success("Login Realizado");
     } catch (error) {
       toast.error("algo não deu");
