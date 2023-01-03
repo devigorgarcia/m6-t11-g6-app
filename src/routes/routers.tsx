@@ -4,6 +4,7 @@ import { Login } from "../pages/Login";
 import { Home } from "../pages/Home";
 import { ProductPage } from "../pages/ProductPage";
 import { DashboardAdmin } from "../pages/DashboardAdmin";
+import { Register } from "../pages/Register";
 
 export const Router = () => {
   return (

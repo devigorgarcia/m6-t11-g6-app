@@ -7,18 +7,18 @@ import jwt_decode from "jwt-decode";
 import { AdminSectionDash } from "../../components/DashboardAdmin/UserSectionDash";
 
 export const DashboardAdmin = () => {
-  const { getUser, user } = useContext(UserContext);
+  const { getUserProfile, userProfile } = useContext(UserContext);
   const token = localStorage.getItem("@MotorShop:Token");
 
   useEffect(() => {
     if (token) {
       let decodeToken = jwt_decode<any>(token);
-      getUser(decodeToken.id);
+      getUserProfile(decodeToken.id);
     }
-  }, [user.vehicle]);
+  }, [userProfile.vehicle]);
 
-  const newCarList = user.vehicle?.filter((vehicle) => vehicle.isCar === true);
-  const newBikeList = user.vehicle?.filter(
+  const newCarList = userProfile.vehicle?.filter((vehicle) => vehicle.isCar === true);
+  const newBikeList = userProfile.vehicle?.filter(
     (vehicle) => vehicle.isCar === false
   );
   return (

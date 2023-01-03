@@ -7,33 +7,35 @@ import { Header } from "../../components/Header";
 import { UserContext } from "../../contexts/userContext";
 
 export const DashboardAnnouncementPage = () => {
-  const { getUser, user } = useContext(UserContext);
+  const { getUserProfile, userProfile } = useContext(UserContext);
 
   const { userId } = useParams();
 
   useEffect(() => {
     if (userId) {
-      getUser(userId);
+      getUserProfile(userId);
     }
   }, []);
 
-  const newCarList = user.vehicle?.filter((vehicle) => vehicle.isCar === true);
-  const newBikeList = user.vehicle?.filter(
+  const newCarList = userProfile.vehicle?.filter(
+    (vehicle) => vehicle.isCar === true
+  );
+  const newBikeList = userProfile.vehicle?.filter(
     (vehicle) => vehicle.isCar === false
   );
 
-  console.log(user);
+  console.log(userProfile);
   return (
     <>
       <Header />
       <UserSectionDash />
       {newCarList ? (
-        <ShowCaseDashCars cars={newCarList} user={user} />
+        <ShowCaseDashCars cars={newCarList} user={userProfile} />
       ) : (
         <h1>oi</h1>
       )}
       {newBikeList ? (
-        <ShowCaseDashBikes bikes={newBikeList} user={user} />
+        <ShowCaseDashBikes bikes={newBikeList} user={userProfile} />
       ) : (
         <h1>oi</h1>
       )}
