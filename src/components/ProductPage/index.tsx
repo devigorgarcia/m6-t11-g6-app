@@ -29,7 +29,7 @@ export const ProductComponent = () => {
   const carYear = vehicleInfo.year;
   const carComments = vehicleInfo.Comment;
   const carUser = vehicleInfo.user;
-
+  
   return (
     <Flex
       bg={[

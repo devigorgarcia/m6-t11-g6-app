@@ -1,8 +1,26 @@
 import { Flex, Heading, Image, Text } from "@chakra-ui/react";
 import bolinha from "../../../assets/bolinha.svg";
-import { IIComments } from "../../../interfaces/VehicleContext/Vehicle.interfaces";
 
-export const Comments = ({ comments }: IIComments) => {
+export interface IComments {
+  comments: ICommentsData[];
+}
+
+export interface ICommentsData {
+  content: string;
+  createAt: string;
+  id: string;
+  user: ICommentUser;
+  userId: string;
+  vehicleId: string;
+}
+
+export interface ICommentUser {
+  id: string;
+  name: string;
+}
+
+export const Comments = ({ comments }: IComments) => {
+  console.log(comments);
   const name1 = "Júlia Lima";
   const firstLetter1 = name1.split(" ")[0][0];
   const secondLetter1 = name1.split(" ")[1][0];

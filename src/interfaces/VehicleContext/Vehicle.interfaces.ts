@@ -1,3 +1,4 @@
+import { ICommentContextData } from "../Comment/contextComment.interfafe";
 import { UserVehicleData } from "./../UserContext/UserContext.interfaces";
 export interface VehicleContextData {
   createVehicle: (data: ICreateVehicleData) => void;
@@ -34,19 +35,19 @@ export interface ICreateVehicleData {
   isActive: boolean;
   isCar: boolean;
   user: IUserOwner;
-  Comment: IComment;
+  Comment: ICommentContextData;
 }
 
-export interface IComment {
-  content: string;
-  createdAt: string;
-  userId: string;
-  vehicleId: string;
-}
+// export interface IComment {
+//   content: string;
+//   createdAt: string;
+//   userId: string;
+//   vehicleId: string;
+// }
 
-export interface IIComments {
-  comments: IComment;
-}
+// export interface IIComments {
+//   comments: IComment;
+// }
 
 export interface IOwnerData {
   owner: IUserOwner;
