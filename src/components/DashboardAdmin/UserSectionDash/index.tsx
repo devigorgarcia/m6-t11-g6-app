@@ -5,12 +5,11 @@ import { UserContext } from "../../../contexts/userContext";
 import { AdminDetails } from "./AdminDetails";
 
 export const AdminSectionDash = () => {
-  const { getUser, user } = useContext(UserContext);
+  const { getUserProfile, userProfile } = useContext(UserContext);
   const { userId } = useParams();
-
   useEffect(() => {
     if (userId) {
-      getUser(userId);
+      getUserProfile(userId);
     }
   }, []);
 
@@ -23,7 +22,7 @@ export const AdminSectionDash = () => {
         "linear-gradient(#4529E6 28%, #FFFFFF 0%)",
       ]}
     >
-      <AdminDetails user={user} />
+      <AdminDetails user={userProfile} />
     </Flex>
   );
 };
