@@ -4,7 +4,7 @@ import { ShowCaseDashBikes } from "../../components/DashboardAnnouncement/ShowCa
 import { ShowCaseDashCars } from "../../components/DashboardAnnouncement/ShowCaseDashCars";
 import { UserSectionDash } from "../../components/DashboardAnnouncement/UserSectionDash";
 import { Header } from "../../components/Header";
-import { UserContext } from "../../contexts/userContext";
+import { UserContext } from "../../contexts/UserContext";
 
 export const DashboardAnnouncementPage = () => {
   const { getUserProfile, userProfile } = useContext(UserContext);

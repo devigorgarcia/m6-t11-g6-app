@@ -2,10 +2,10 @@ import { useContext, useEffect } from "react";
 import { ShowCaseDashBikes } from "../../components/DashboardAnnouncement/ShowCaseDashBikes";
 import { ShowCaseDashCars } from "../../components/DashboardAnnouncement/ShowCaseDashCars";
 import { Header } from "../../components/Header";
-import { UserContext } from "../../contexts/userContext";
 import jwt_decode from "jwt-decode";
 import { AdminSectionDash } from "../../components/DashboardAdmin/UserSectionDash";
 import { VehicleContext } from "../../contexts/VehicleContext";
+import { UserContext } from "../../contexts/UserContext";
 
 export const DashboardAdmin = () => {
   const { getUserProfile, userProfile } = useContext(UserContext);

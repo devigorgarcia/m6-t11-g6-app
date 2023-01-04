@@ -5,8 +5,8 @@ import { Home } from "../pages/Home";
 import { ProductPage } from "../pages/ProductPage";
 import { DashboardAdmin } from "../pages/DashboardAdmin";
 import { Register } from "../pages/Register";
-import { ResetPasswordPage } from "../pages/ResetPassword";
 import { ConfirmTokenPage } from "../pages/ResetPassword/ConfirmTokenPage";
+import { ResetPasswordPage } from "../pages/ResetPassword";
 
 export const Router = () => {
   return (
