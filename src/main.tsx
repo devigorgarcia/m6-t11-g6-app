@@ -8,6 +8,7 @@ import { RegisterProvider } from "./contexts/registerContext";
 import { VehicleProvider } from "./contexts/VehicleContext";
 import { ModalProvider } from "./contexts/ModalContext";
 import { UserProvider } from "./contexts/userContext";
+import { CommentProvider } from "./contexts/CommentContext";
 
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
@@ -18,7 +19,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           <ModalProvider>
             <VehicleProvider>
               <UserProvider>
-                <App />
+                <CommentProvider>
+                  <App />
+                </CommentProvider>
               </UserProvider>
             </VehicleProvider>
           </ModalProvider>
