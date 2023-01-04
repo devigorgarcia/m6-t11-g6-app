@@ -5,12 +5,14 @@ interface MenuItemProps {
   children: ReactNode;
   to: string;
   highlight?: boolean;
+  logout?: boolean;
 }
 
 export const MenuItem = ({
   children,
   to,
   highlight,
+  logout,
   ...rest
 }: MenuItemProps) => {
   return (

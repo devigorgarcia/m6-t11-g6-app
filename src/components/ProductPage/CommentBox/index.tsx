@@ -16,7 +16,8 @@ import {
   IContent,
 } from "../../../interfaces/Comment/contextComment.interfafe";
 import jwt_decode from "jwt-decode";
-import { UserContext } from "../../../contexts/userContext";
+import { UserContext } from "../../../contexts/UserContext";
+
 
 export const CommentBox = ({ owner, carId }: ICommentContextInfo) => {
   const { handleSubmit, register } = useForm<IContent>({});

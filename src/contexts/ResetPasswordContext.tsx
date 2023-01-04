@@ -44,6 +44,7 @@ export const ResetPasswordProvider = ({ children }: ProviderData) => {
       });
       console.log(response);
       toast.success("Senha Alterada com sucesso");
+      localStorage.clear();
       navigate("/login");
     } catch (error) {
       console.log(error);
