@@ -8,9 +8,8 @@ import {
   CardFooter,
   VStack,
 } from "@chakra-ui/react";
-import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../contexts/userContext";
+
 import { IVehicleProfileData } from "../../interfaces/VehicleContext/Vehicle.interfaces";
 
 interface IVehicleProps {

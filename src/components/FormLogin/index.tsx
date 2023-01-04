@@ -44,8 +44,7 @@ export const FormLogin = () => {
   return (
     <Flex
       flexDir={["column"]}
-      height={"90vh"}
-      width={["100vw"]}
+      width={["100%"]}
       alignItems="center"
       padding={["100px"]}
       bg="grey.8"

@@ -5,6 +5,9 @@ import { Home } from "../pages/Home";
 import { ProductPage } from "../pages/ProductPage";
 import { DashboardAdmin } from "../pages/DashboardAdmin";
 import { Register } from "../pages/Register";
+import { ConfirmTokenPage } from "../pages/ResetPassword/ConfirmTokenPage";
+import { ResetPasswordPage } from "../pages/ResetPassword";
+import { NewPasswordPage } from "../pages/ResetPassword/NewPasswordPage";
 
 export const Router = () => {
   return (
@@ -18,7 +21,9 @@ export const Router = () => {
       />
       <Route path="/dashboardAdmin" element={<DashboardAdmin />} />
       <Route path="/product/:id" element={<ProductPage />} />
-
+      <Route path="/resetPassword" element={<ResetPasswordPage />} />
+      <Route path="/confirmToken" element={<ConfirmTokenPage />} />
+      <Route path="/newPassword" element={<NewPasswordPage />} />
     </Routes>
   );
 };

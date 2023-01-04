@@ -7,9 +7,9 @@ import { LoginProvider } from "./contexts/loginContext";
 import { RegisterProvider } from "./contexts/registerContext";
 import { VehicleProvider } from "./contexts/VehicleContext";
 import { ModalProvider } from "./contexts/ModalContext";
-import { UserProvider } from "./contexts/userContext";
+import { UserProvider } from "./contexts/UserContext";
+import { ResetPasswordProvider } from "./contexts/ResetPasswordContext";
 import { CommentProvider } from "./contexts/CommentContext";
-
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>
@@ -20,7 +20,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
             <VehicleProvider>
               <UserProvider>
                 <CommentProvider>
-                  <App />
+                  <ResetPasswordProvider>
+                    <App />
+                  </ResetPasswordProvider>
                 </CommentProvider>
               </UserProvider>
             </VehicleProvider>

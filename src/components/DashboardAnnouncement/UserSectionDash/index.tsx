@@ -1,16 +1,17 @@
 import { Flex } from "@chakra-ui/react";
 import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { UserContext } from "../../../contexts/userContext";
+import { UserContext } from "../../../contexts/UserContext";
+
 import { AnnouncementDetails } from "../AnnouncementDetails";
 
 export const UserSectionDash = () => {
-  const { getUser, user } = useContext(UserContext);
+  const { getUserProfile, userProfile } = useContext(UserContext);
   const { userId } = useParams();
 
   useEffect(() => {
     if (userId) {
-      getUser(userId);
+      getUserProfile(userId);
     }
   }, []);
 
@@ -23,7 +24,7 @@ export const UserSectionDash = () => {
         "linear-gradient(#4529E6 28%, #FFFFFF 0%)",
       ]}
     >
-      <AnnouncementDetails user={user} />
+      <AnnouncementDetails user={userProfile} />
     </Flex>
   );
 };

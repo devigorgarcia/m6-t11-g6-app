@@ -18,6 +18,8 @@ export const VehicleProvider = ({ children }: ProviderData) => {
   const { onCloseCreate, onOpenSucess, onCloseDelete, onCloseEdit } =
     useContext(ModalContext);
 
+  const [newVehicle, setNewVehicle] = useState({});
+
   const [vehicleInfo, setVehicleInfo] = useState<ICreateVehicleData>(
     {} as ICreateVehicleData
   );
@@ -42,6 +44,7 @@ export const VehicleProvider = ({ children }: ProviderData) => {
       .then((resp) => {
         onCloseCreate();
         onOpenSucess();
+        setNewVehicle(resp.data);
       })
       .catch((err) => console.log(err));
   };
@@ -113,6 +116,7 @@ export const VehicleProvider = ({ children }: ProviderData) => {
         carFilter,
         owner,
         deleteVehicle,
+        newVehicle
       }}
     >
       {children}
