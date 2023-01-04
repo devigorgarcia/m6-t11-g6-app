@@ -49,10 +49,6 @@ export interface ICreateVehicleData {
 //   comments: IComment;
 // }
 
-export interface IOwnerData {
-  owner: IUserOwner;
-}
-
 export interface IImg {
   image?: string;
 }

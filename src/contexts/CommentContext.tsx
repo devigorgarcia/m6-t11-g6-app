@@ -1,20 +1,30 @@
 import { createContext, useState } from "react";
-import { ICommentContextData } from "../interfaces/Comment/contextComment.interfafe";
+import {
+  ICommentContext,
+  ICommentContextData,
+} from "../interfaces/Comment/contextComment.interfafe";
 import { ProviderData } from "../interfaces/provider.interface";
 import { api } from "../api";
-import { IComments } from "../components/ProductPage/Comments";
 
 export const CommentContext = createContext<ICommentContextData>(
   {} as ICommentContextData
 );
 
 export const CommentProvider = ({ children }: ProviderData) => {
-  const [comments, setComments] = useState<IComments[]>([] as IComments[]);
-  const [oneComment, setOneComment] = useState<IComments>({} as IComments);
+  const [comments, setComments] = useState<ICommentContext[]>(
+    [] as ICommentContext[]
+  );
+  const [oneComment, setOneComment] = useState<ICommentContext>(
+    {} as ICommentContext
+  );
+
+  const token = localStorage.getItem("@MotorShop:Token");
+
+  api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
   const createComment = async (content: string, vehicleId: string) => {
     await api
-      .post(`/comments/${vehicleId}`)
+      .post(`/comments/${vehicleId}`, content)
       .then((resp) => console.log(resp))
       .catch((err) => console.log(err));
   };

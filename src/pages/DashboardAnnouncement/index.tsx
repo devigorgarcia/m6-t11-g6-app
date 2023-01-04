@@ -22,7 +22,6 @@ export const DashboardAnnouncementPage = () => {
     (vehicle) => vehicle.isCar === false
   );
 
-  console.log(user);
   return (
     <>
       <Header />
