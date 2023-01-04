@@ -8,7 +8,6 @@ import { AdminDetails } from "./AdminDetails";
 export const AdminSectionDash = () => {
   const { getUserProfile, userProfile } = useContext(UserContext);
   const { userId } = useParams();
-
   useEffect(() => {
     if (userId) {
       getUserProfile(userId);

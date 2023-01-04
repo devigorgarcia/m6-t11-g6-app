@@ -79,7 +79,6 @@ export const VehicleProvider = ({ children }: ProviderData) => {
     await api
       .get("/vehicles")
       .then((resp) => {
-        console.log(resp);
         setAllvehicles(resp.data);
       })
       .catch((err) => {
