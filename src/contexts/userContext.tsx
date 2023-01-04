@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { api } from "../api";
 import { ProviderData } from "../interfaces/provider.interface";
 import {

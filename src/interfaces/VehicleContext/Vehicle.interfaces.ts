@@ -11,6 +11,7 @@ export interface VehicleContextData {
   carFilter: boolean | null;
   owner: IUserOwner;
   deleteVehicle: (vehicleId: string) => Promise<void>;
+  newVehicle: any
 }
 
 export interface IUserOwner {
