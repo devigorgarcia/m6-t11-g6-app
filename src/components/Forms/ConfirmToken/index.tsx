@@ -1,11 +1,13 @@
 import { Button, Flex, FormLabel, Input } from "@chakra-ui/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ResetPasswordContext } from "../../../contexts/ResetPasswordContext";
 
 export const ConfirmTokenForm = () => {
+  const { verifyToken } = useContext(ResetPasswordContext);
   const [submitToken, setSubmitToken] = useState<string>("");
-  
-  const verifyToken = (token: string) => {
-    console.log(token);
+
+  const verifyTokenSubmit = (token: string) => {
+    verifyToken(token);
   };
   return (
     <Flex flexDir={["column"]} gap={["4"]} p={["8"]}>
@@ -16,7 +18,7 @@ export const ConfirmTokenForm = () => {
         onChange={(e) => setSubmitToken(e.target.value)}
       />
       <Button
-        onClick={() => verifyToken(submitToken)}
+        onClick={() => verifyTokenSubmit(submitToken)}
         alignSelf={["center"]}
         variant={"brand1"}
       >

@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../api";
 import { ProviderData } from "../interfaces/provider.interface";
@@ -9,6 +10,7 @@ export const ResetPasswordContext = createContext<IResetPasswordContextData>(
 );
 
 export const ResetPasswordProvider = ({ children }: ProviderData) => {
+  const navigate = useNavigate();
   const sendEmailRequest = async (email: string) => {
     try {
       const response = await api.post(`/send-email`, {
@@ -20,24 +22,38 @@ export const ResetPasswordProvider = ({ children }: ProviderData) => {
       console.log(error);
       toast.error("Email inválido");
     }
-
-    const verifyToken = async (token: string) => {
-      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      try {
-        const response = await api.get("confirmToken");
-        console.log(response);
-        localStorage.setItem("@MotorsShop:RecToken", token);
-      } catch (error) {
-        console.log(error);
-      }
-    };
   };
-  //Fazer a requisião de ao enviar o token recebido por email no input para ver se é true ou false
-  //Se for true, ir para pagina de update senha
+  const verifyToken = async (token: string) => {
+    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    try {
+      await api.get("confirmToken");
+      localStorage.setItem("@MotorsShop:RecToken", token);
+      navigate("/newPassword");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   //Fazer requisição de update de senha
+  const updateNewPassword = async (newPassword: string) => {
+    const token = localStorage.getItem("@MotorsShop:RecToken");
+    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    try {
+      const response = await api.patch("/resetPassword", {
+        password: newPassword,
+      });
+      console.log(response);
+      toast.success("Senha Alterada com sucesso");
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <ResetPasswordContext.Provider value={{ sendEmailRequest }}>
+    <ResetPasswordContext.Provider
+      value={{ sendEmailRequest, verifyToken, updateNewPassword }}
+    >
       {children}
     </ResetPasswordContext.Provider>
   );
