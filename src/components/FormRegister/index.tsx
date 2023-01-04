@@ -4,28 +4,33 @@ import {
   FormLabel,
   Stack,
   Input,
+  FormErrorMessage,
   Flex,
   Heading,
   Box,
+  useDisclosure,
 } from "@chakra-ui/react";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { useContext, useState } from "react";
 import { LoginContext } from "../../contexts/loginContext";
+import ModalRegister from "../ModalRegister";
+import { RegisterContext } from "../../contexts/registerContext";
 
 interface IRegisterData {
   name: string;
   email: string;
-  CPF: number;
-  fone: number;
-  birthDate: Date;
-  description: string;
+  cpf: string;
+  fone: string;
+  birthday: Date;
+  descripiton: string;
   is_admin: boolean;
   password: string;
   confirmPassword: string;
   address: {
-    CEP: number;
+    cep: string;
     state: string;
     city: string;
     street: string;
@@ -34,44 +39,54 @@ interface IRegisterData {
   };
 }
 
-export const FormRegister = () => {
-  const [isAdmin, setIsAdmin] = useState(false)
 
-  //const { login } = useContext(LoginContext);
+
+export const FormRegister = () => {
+  const [isAdmin, setIsAdmin] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { registerForm } = useContext(RegisterContext);
   const schema = yup.object().shape({
-    name: yup.string().required("Campo obrigatório"),
+    name: yup.string().required(),
     email: yup
       .string()
       .email("O email está errado")
-      .required("Campo obrigatório"),
-    CPF: yup.number().required("Campo obrigatório"),
-    fone: yup.number().required("Campo obrigatório"),
-    birthDate: yup.date().required("Campo obrigatório"),
-    description: yup.string().required("Campo obrigatório"),
-    //as_admin: yup.boolean().required("Campo obrigatório"),
-    password: yup.string().required("Campo obrigatório"),
-    confirmPassword: yup.string().oneOf([yup.ref("password"), null], "Passwords must match"),
+      .required(),
+    cpf: yup.string().required(),
+    fone: yup.string().required(),
+    birthday: yup.date().required(),
+    descripiton: yup.string().required(),
+    is_admin: yup.boolean().required().default(isAdmin),
+    password: yup.string().required(),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "Passwords must match"),
     address: yup.object().shape({
-      CEP: yup.number().required("Campo obrigatório"),
-      state: yup.string().required("Campo obrigatório"),
-      city: yup.string().required("Campo obrigatório"),
-      street: yup.string().required("Campo obrigatório"),
-      number: yup.number().required("Campo obrigatório"),
+      cep: yup.string().required(),
+      state: yup.string().required(),
+      city: yup.string().required(),
+      street: yup.string().required(),
+      number: yup.number().required(),
       complement: yup.string(),
     }),
   });
 
-  const { handleSubmit, register } = useForm<IRegisterData>({
+  const { handleSubmit, register, setValue } = useForm<IRegisterData>({
     resolver: yupResolver(schema),
   });
 
   const onSubmit = (data: IRegisterData) => {
-    //data[is_admin] = isAdmin 
-    console.log(data);
-    //login(data);
+
+    const currentData = { 
+      ...data , is_admin: isAdmin
+    }
+    const {confirmPassword, ...finalData} = currentData
+   
+    registerForm(finalData, onOpen);
   };
 
   return (
+    <>
     <Flex
       flexDir={["column"]}
       width={["100vw"]}
@@ -82,7 +97,7 @@ export const FormRegister = () => {
       <Flex
         gap="10px"
         justifyContent="center"
-        width={["412px"]}
+        width={["auto", "412px"]}
         bg={"grey.11"}
         flexDir={["column"]}
         alignItems="center"
@@ -104,7 +119,7 @@ export const FormRegister = () => {
           </Heading>
         </Flex>
 
-        <FormControl as={"form"} onSubmit={handleSubmit(onSubmit)}>
+        <FormControl isRequired as={"form"} onSubmit={handleSubmit(onSubmit)}>
           <Flex flexDir={["column"]} gap={["8"]}>
             <Box>
               <FormLabel>Nome</FormLabel>
@@ -115,6 +130,7 @@ export const FormRegister = () => {
                 {...register("name")}
               />
             </Box>
+            <FormErrorMessage>Name is required.</FormErrorMessage>
             <Box>
               <FormLabel>Email</FormLabel>
               <Input
@@ -130,7 +146,7 @@ export const FormRegister = () => {
                 id="CPF"
                 placeholder="000.000.000-00"
                 type="number"
-                {...register("CPF")}
+                {...register("cpf")}
               />
             </Box>
             <Box>
@@ -148,7 +164,7 @@ export const FormRegister = () => {
                 id="birthDate"
                 placeholder="00/00/00"
                 type="date"
-                {...register("birthDate")}
+                {...register("birthday")}
               />
             </Box>
             <Box>
@@ -158,7 +174,7 @@ export const FormRegister = () => {
                 id="description"
                 placeholder="Digitar descrição"
                 type="text"
-                {...register("description")}
+                {...register("descripiton")}
               />
             </Box>
             <Heading marginTop={"20px"} fontSize="x">
@@ -169,8 +185,8 @@ export const FormRegister = () => {
               <Input
                 id="CEP"
                 placeholder="00000-000"
-                type="number"
-                {...register("address.CEP")}
+                type="text"
+                {...register("address.cep")}
               />
             </Box>
             <Box display="flex" gap={"7px"}>
@@ -232,11 +248,21 @@ export const FormRegister = () => {
               spacing={4}
               align="center"
             >
-              <Button width={"100%"} colorScheme="teal" variant="outline1" onClick={()=>setIsAdmin(false)}>
+              <Button
+                width={"100%"}
+                colorScheme="teal"
+                variant={isAdmin ? "outline1" : "brand1"}
+                onClick={() => setIsAdmin(false)}
+              >
                 Comprador
               </Button>
 
-              <Button width={"100%"} colorScheme="teal" variant="outline1" onClick={()=>setIsAdmin(true)}>
+              <Button
+                width={"100%"}
+                colorScheme="teal"
+                variant={isAdmin ? "brand1" : "outline1"}
+                onClick={() => setIsAdmin(true)}
+              >
                 Anunciante
               </Button>
             </Stack>
@@ -263,12 +289,17 @@ export const FormRegister = () => {
               width={"100%"}
               colorScheme="teal"
               variant="brand1"
+    
             >
               Finalizar cadastro
             </Button>
           </Flex>
         </FormControl>
       </Flex>
+
     </Flex>
+
+    <ModalRegister isOpen={isOpen} onClose={onClose}/>
+    </>
   );
 };
