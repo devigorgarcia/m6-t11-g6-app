@@ -20,7 +20,6 @@ export const DashboardAdmin = () => {
     }
   }, [newVehicle]);
 
-
   const newCarList = userProfile.vehicle?.filter(
     (vehicle) => vehicle.isCar === true
   );
@@ -31,8 +30,16 @@ export const DashboardAdmin = () => {
     <>
       <Header />
       <AdminSectionDash />
-      {newCarList ? <ShowCaseDashCars cars={newCarList} /> : <h1>oi</h1>}
-      {newBikeList ? <ShowCaseDashBikes bikes={newBikeList} /> : <h1>oi</h1>}
+      {newCarList ? (
+        <ShowCaseDashCars cars={newCarList} />
+      ) : (
+        <h1>Sem Registro de Veiculos</h1>
+      )}
+      {newBikeList ? (
+        <ShowCaseDashBikes bikes={newBikeList} />
+      ) : (
+        <h1>Sem Registro de Veiculos</h1>
+      )}
     </>
   );
 };

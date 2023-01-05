@@ -31,12 +31,12 @@ export const DashboardAnnouncementPage = () => {
       {newCarList ? (
         <ShowCaseDashCars cars={newCarList} user={userProfile} />
       ) : (
-        <h1>oi</h1>
+        <h1>Sem Registro de Veiculos</h1>
       )}
       {newBikeList ? (
         <ShowCaseDashBikes bikes={newBikeList} user={userProfile} />
       ) : (
-        <h1>oi</h1>
+        <h1>Sem Registro de Veiculos</h1>
       )}
     </>
   );

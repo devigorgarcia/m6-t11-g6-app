@@ -19,7 +19,7 @@ export const ShowCaseBikes = ({ bikes }: ICarsData) => {
           })}
         </HStack>
       ) : (
-        <h1>Oi</h1>
+        <h1>Sem Registro de Veiculos</h1>
       )}
     </Flex>
   );
