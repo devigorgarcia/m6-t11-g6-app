@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 import { api } from "../api";
 import { IEditProfileData } from "../components/Forms/EditProfile";
 import { ProviderData } from "../interfaces/provider.interface";
@@ -6,12 +6,15 @@ import {
   UserContextData,
   UserProfileData,
 } from "../interfaces/UserContext/UserContext.interfaces";
+import { ModalContext } from "./ModalContext";
 
 export const UserContext = createContext<UserContextData>(
   {} as UserContextData
 );
 
+
 export const UserProvider = ({ children }: ProviderData) => {
+  const { onCloseEditProfile } = useContext(ModalContext);
   const [userProfile, setUserProfile] = useState<UserProfileData>(
     {} as UserProfileData
   );
@@ -34,7 +37,8 @@ export const UserProvider = ({ children }: ProviderData) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response);
+      getUserProfile(userId)
+      onCloseEditProfile()
     } catch (err) {
       console.log(err);
     }
