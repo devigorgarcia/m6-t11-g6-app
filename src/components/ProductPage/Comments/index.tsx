@@ -48,7 +48,7 @@ export const Comments = ({ carId }: ICarId) => {
                     </Flex>
                     <Text>{comment.user.name}</Text>
                     <Image src={bolinha} />
-                    <Text color={"#868E96"}>há 3 dias</Text>
+                    <Text color={"#868E96"}>{comment.createAt}</Text>
                   </Flex>
                   <Text>{comment.content}</Text>
                 </Flex>
