@@ -25,7 +25,10 @@ export const CommentProvider = ({ children }: ProviderData) => {
   const createComment = async (content: string, vehicleId: string) => {
     await api
       .post(`/comments/${vehicleId}`, content)
-      .then((resp) => console.log(resp))
+      .then((resp) => {
+        setOneComment(resp.data);
+        console.log(resp);
+      })
       .catch((err) => console.log(err));
   };
 

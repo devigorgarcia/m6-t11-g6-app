@@ -95,6 +95,7 @@ export const FormLogin = () => {
 
           <Stack width={"100%"} direction="column" spacing={4} align="center">
             <Button
+              onClick={() => navigate("/resetPassword")}
               width={"100%"}
               alignItems="center"
               justifyContent="end"

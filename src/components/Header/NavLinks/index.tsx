@@ -46,7 +46,7 @@ export const NavLinks = ({ isOpen }: NavLinksProps) => {
   const logout = () => {
     localStorage.removeItem("@MotorShop:Token");
     navigate("/");
-    window.location.reload()
+    window.location.reload();
   };
 
   return (
@@ -88,7 +88,12 @@ export const NavLinks = ({ isOpen }: NavLinksProps) => {
                   <VStack alignItems="flex-start" spacing="4">
                     <MenuItem to="/">Editar Perfil</MenuItem>
                     <MenuItem to="/">Editar Endereço</MenuItem>
-                    <MenuItem to="/">Minhas Compras</MenuItem>
+                    {logged ? (
+                      <MenuItem to="/dashboardAdmin">Meus Anuncios</MenuItem>
+                    ) : (
+                      <MenuItem to="/">Minhas Compras</MenuItem>
+                    )}
+
                     <Text
                       cursor="pointer"
                       display={"flex"}

@@ -35,7 +35,7 @@ function ModalRegister({ isOpen, onClose }: IModalRegister) {
               colorScheme="teal"
               variant={"brand1"}
               mr={3}
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/login")}
             >
               Ir para login
             </Button>

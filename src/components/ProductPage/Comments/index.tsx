@@ -9,14 +9,13 @@ interface ICarId {
   carId: string;
 }
 export const Comments = ({ carId }: ICarId) => {
-  const { getComments, comments } = useContext(CommentContext);
+  const { getComments, comments, oneComment } = useContext(CommentContext);
   const { profileVehicle, vehicleInfo } = useContext(VehicleContext);
 
-  profileVehicle(carId)
-  
   useEffect(() => {
+    profileVehicle(carId);
     getComments(carId);
-  }, [vehicleInfo.Comment]);
+  }, [oneComment]);
 
   return (
     <>
