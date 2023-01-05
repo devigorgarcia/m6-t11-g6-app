@@ -66,12 +66,16 @@ export const VehicleProvider = ({ children }: ProviderData) => {
     });
   };
 
-  const updateVehicle = async (data: ICreateVehicleData, vehicleId: string) => {
+  const updateVehicle = async (
+    data: ICreateVehicleData,
+    vehicleId: string,
+    onClose: () => void
+  ) => {
     await api
       .patch(`/vehicles/${vehicleId}`, data)
       .then((resp) => {
         console.log(resp);
-        onCloseEdit();
+        onClose();
         setNewVehicle(resp.data);
       })
       .catch((err) => console.log(err));

@@ -28,7 +28,7 @@ export const EditVehicleModal = ({
             <ModalHeader>Editar anúncio</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <EditVehicleForm vehicleInfo={vehicle} />
+              <EditVehicleForm vehicleInfo={vehicle} onClose={onClose}/>
             </ModalBody>
           </ModalContent>
         </Modal>

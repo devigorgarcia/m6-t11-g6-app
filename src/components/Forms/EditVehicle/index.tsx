@@ -22,7 +22,7 @@ import { IEditModalProps } from "../../../interfaces/Modals/modals.interface";
 import { DeleteVehicleModal } from "../../Modals/DeleteVehicleModal";
 import { ModalContext } from "../../../contexts/ModalContext";
 
-export const EditVehicleForm = ({ vehicleInfo }: IEditModalProps) => {
+export const EditVehicleForm = ({ vehicleInfo, onClose }: IEditModalProps) => {
   const { updateVehicle } = useContext(VehicleContext);
   const { onOpenDelete } = useContext(ModalContext);
   const actualGalleryArray = () => {
@@ -66,7 +66,7 @@ export const EditVehicleForm = ({ vehicleInfo }: IEditModalProps) => {
       isActive: isPublic,
     };
 
-    updateVehicle(fulLData, vehicleInfo.id);
+    updateVehicle(fulLData, vehicleInfo.id, onClose);
   };
 
   const addInputField = () => {
