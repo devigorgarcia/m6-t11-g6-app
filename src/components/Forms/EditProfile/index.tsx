@@ -13,9 +13,10 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { useContext, useEffect } from "react";
-import { UserContext } from "../../../contexts/userContext";
+
 import jwt_decode from "jwt-decode";
 import { ModalContext } from "../../../contexts/ModalContext";
+import { UserContext } from "../../../contexts/UserContext";
 
 
 export interface IEditProfileData {

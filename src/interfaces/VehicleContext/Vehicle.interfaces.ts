@@ -1,3 +1,4 @@
+import { ICommentContextData } from "../Comment/contextComment.interfafe";
 import { UserVehicleData } from "./../UserContext/UserContext.interfaces";
 export interface VehicleContextData {
   createVehicle: (data: ICreateVehicleData) => void;
@@ -5,12 +6,17 @@ export interface VehicleContextData {
   vehicleInfo: ICreateVehicleData;
   getVehicles: () => Promise<void>;
   vehicles: ICreateVehicleData[];
-  updateVehicle: (data: ICreateVehicleData, vehicleId: string) => Promise<void>;
+  updateVehicle: (
+    data: ICreateVehicleData,
+    vehicleId: string,
+    onClose: () => void
+  ) => Promise<void>;
   allVehicles: IVehicleProfileData[];
   setCarFilter: React.Dispatch<React.SetStateAction<boolean | null>>;
   carFilter: boolean | null;
   owner: IUserOwner;
   deleteVehicle: (vehicleId: string) => Promise<void>;
+  newVehicle: any;
 }
 
 export interface IUserOwner {
@@ -34,22 +40,7 @@ export interface ICreateVehicleData {
   isActive: boolean;
   isCar: boolean;
   user: IUserOwner;
-  Comment: IComment;
-}
-
-export interface IComment {
-  content: string;
-  createdAt: string;
-  userId: string;
-  vehicleId: string;
-}
-
-export interface IIComments {
-  comments: IComment;
-}
-
-export interface IOwnerData {
-  owner: IUserOwner;
+  Comment: ICommentContextData;
 }
 
 export interface IImg {

@@ -1,10 +1,10 @@
 import {
+  Avatar,
   Box,
   Button,
   Center,
   Divider,
   Flex,
-  Image,
   Menu,
   MenuButton,
   MenuList,
@@ -13,29 +13,52 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { MenuItem } from "./MenuItem";
-import { useContext } from "react";
 import { ModalContext } from "../../../contexts/ModalContext";
 import { EditProfileModal } from "../../Modals/EditProfileModal";
+import jwt_decode from "jwt-decode";
+import { UserContext } from "../../../contexts/UserContext";
+
 interface NavLinksProps {
   isOpen: boolean;
 }
 
 export const NavLinks = ({ isOpen }: NavLinksProps) => {
-  const [logged, setIsLogged] = useState(true);
-  const name = "Samuel Leão";
-  const firstLetter = name.split(" ")[0][0];
-  const secondLetter = name.split(" ")[1][0];
-  const avatar = `${firstLetter + secondLetter}`;
-
+  const { getUserProfile, userProfile } = useContext(UserContext);
   const { onOpenEditProfile } = useContext(ModalContext);
+
+  const [logged, setIsLogged] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("@MotorShop:Token") || "";
+
+    const verifyLogged = (token: string) => {
+      if (token) {
+        setIsLogged(true);
+        let decodeToken = jwt_decode<any>(token);
+        getUserProfile(decodeToken.id);
+      } else {
+        setIsLogged(false);
+      }
+    };
+    verifyLogged(token);
+  }, []);
+
+  const logout = () => {
+    localStorage.removeItem("@MotorShop:Token");
+    navigate("/");
+    window.location.reload();
+  };
 
   return (
     <>
       <Box
         display={{ base: isOpen ? "block" : "none", md: "block" }}
         flexBasis={{ base: "100%", md: "auto" }}
+        p="4"
       >
         <Stack
           spacing={[4, 4, 4, 4]}
@@ -56,20 +79,13 @@ export const NavLinks = ({ isOpen }: NavLinksProps) => {
             <Flex align="center" justify="center">
               <Menu>
                 <Flex align="center" gap="3">
-                  <Flex
-                    w="32px"
-                    h="32px"
-                    rounded="full"
-                    bg="brand.1"
-                    align="center"
-                    justifyContent="center"
-                  >
-                    <Text color="white" fontSize="14px" fontWeight="700">
-                      {avatar}
-                    </Text>
-                  </Flex>
                   <MenuButton fontSize="16px" color="grey.2">
-                    {name}
+                    <Flex align={"center"} gap="4">
+                      <Avatar size={"sm"} name={userProfile.name} />
+                      <Text fontSize="14px" fontWeight="700">
+                        {userProfile.name}
+                      </Text>
+                    </Flex>
                   </MenuButton>
                 </Flex>
                 <Portal>
@@ -88,17 +104,45 @@ export const NavLinks = ({ isOpen }: NavLinksProps) => {
                         Editar Perfil
                       </Text>
                       <MenuItem to="/">Editar Endereço</MenuItem>
-                      <MenuItem to="/">Minhas Compras</MenuItem>
-                      <MenuItem to="/">Sair</MenuItem>
+                      {logged ? (
+                        <MenuItem to="/dashboardAdmin">Meus Anuncios</MenuItem>
+                      ) : (
+                        <MenuItem to="/">Minhas Compras</MenuItem>
+                      )}
+
+                      <Text
+                        cursor="pointer"
+                        display={"flex"}
+                        alignItems="center"
+                        fontSize={["18px", "17px"]}
+                        gap="2"
+                        color="grey.900"
+                        _hover={{ color: "brand.1" }}
+                        onClick={logout}
+                      >
+                        Sair
+                      </Text>
                     </VStack>
                   </MenuList>
                 </Portal>
               </Menu>
             </Flex>
           ) : (
-            <Flex justifyContent={"space-evenly"}>
-              <Button variant={"light"}>Fazer Login</Button>
-              <Button variant="outline1">Cadastrar</Button>
+            <Flex justifyContent={"space-evenly"} gap="4">
+              <Button
+                w="100%"
+                variant={"light"}
+                onClick={() => navigate("/login")}
+              >
+                Fazer Login
+              </Button>
+              <Button
+                w="100%"
+                variant="outline1"
+                onClick={() => navigate("/register")}
+              >
+                Cadastrar
+              </Button>
             </Flex>
           )}
         </Stack>

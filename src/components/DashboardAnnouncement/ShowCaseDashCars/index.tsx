@@ -1,7 +1,6 @@
 import { Flex, Heading, HStack } from "@chakra-ui/react";
 import { IVehicleProfileData } from "../../../interfaces/VehicleContext/Vehicle.interfaces";
 import { VehicleCardAdmin } from "../../DashboardAdmin/UserSectionDash/AdminDetails/VehicleCardAdmin";
-
 import { VehicleCardDash } from "../VehicleDashCard";
 
 export interface ICarsData {
@@ -26,7 +25,7 @@ export const ShowCaseDashCars = ({ cars, user }: ICarsData) => {
               })}
         </HStack>
       ) : (
-        <h1>Oi</h1>
+        <h1>Sem Registro de Veiculos</h1>
       )}
     </Flex>
   );

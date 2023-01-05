@@ -44,8 +44,7 @@ export const FormLogin = () => {
   return (
     <Flex
       flexDir={["column"]}
-      height={"90vh"}
-      width={["100vw"]}
+      width={["100%"]}
       alignItems="center"
       padding={["100px"]}
       bg="grey.8"
@@ -96,6 +95,7 @@ export const FormLogin = () => {
 
           <Stack width={"100%"} direction="column" spacing={4} align="center">
             <Button
+              onClick={() => navigate("/resetPassword")}
               width={"100%"}
               alignItems="center"
               justifyContent="end"
