@@ -5,6 +5,8 @@ import {
   UserContextData,
   UserProfileData,
 } from "../interfaces/UserContext/UserContext.interfaces";
+import { IEditProfileData } from "../components/Forms/EditProfile";
+const token = localStorage.getItem("@MotorShop:Token");
 
 export const UserContext = createContext<UserContextData>(
   {} as UserContextData
@@ -24,9 +26,23 @@ export const UserProvider = ({ children }: ProviderData) => {
       })
       .catch((err) => console.log(err));
   };
+  
+  const updateProfile = async (data: IEditProfileData, userId: string) => {
+    try {
+      const response = await api.patch(`/users/${userId}`, data, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      console.log(response)
+    }
+    catch(err){
+      console.log(err)
+    }
+  };
 
   return (
-    <UserContext.Provider value={{ getUserProfile, userProfile }}>
+    <UserContext.Provider value={{ getUserProfile, userProfile, updateProfile }}>
       {children}
     </UserContext.Provider>
   );

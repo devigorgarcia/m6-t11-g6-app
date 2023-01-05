@@ -17,18 +17,19 @@ import { UserContext } from "../../../contexts/userContext";
 import jwt_decode from "jwt-decode";
 import { ModalContext } from "../../../contexts/ModalContext";
 
-interface IEditProfileData {
-  name: string;
-  email: string;
-  cpf: string;
-  fone: string;
-  birthday: Date;
-  descripiton: string;
+
+export interface IEditProfileData {
+  name?: string;
+  email?: string;
+  cpf?: string;
+  fone?: string;
+  birthday?: Date;
+  descripiton?: string;
 }
 
 export const EditProfileForm = () => {
   const { onCloseEditProfile } = useContext(ModalContext);
-  const { getUserProfile, userProfile } = useContext(UserContext);
+  const { getUserProfile, userProfile, updateProfile } = useContext(UserContext);
   const token = localStorage.getItem("@MotorShop:Token");
 
   useEffect(() => {
@@ -46,7 +47,7 @@ export const EditProfileForm = () => {
 
   const createSchema = yup.object().shape({
     name: yup.string(),
-    email: yup.string(),
+    email: yup.string().email("o email está errado"),
     cpf: yup.string(),
     fone: yup.string(),
     birthday: yup.date(),
@@ -61,7 +62,10 @@ export const EditProfileForm = () => {
     resolver: yupResolver(createSchema),
   });
 
-  const onSubmit = (data: IEditProfileData) => {};
+
+  const onSubmit = (data: IEditProfileData) => {
+    updateProfile(data, userProfile.id);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -83,6 +87,7 @@ export const EditProfileForm = () => {
             placeholder={userProfile.email}
             {...register("email")}
             defaultValue={userProfile.email}
+            type='email'
           />
         </FormControl>
         <FormControl w="100%">
