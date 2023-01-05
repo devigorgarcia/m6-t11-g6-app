@@ -20,4 +20,5 @@ export interface ModalContextData {
 
 export interface IEditModalProps {
   vehicleInfo: ICreateVehicleData;
+  onClose: () => void;
 }

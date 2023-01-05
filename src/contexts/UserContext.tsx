@@ -19,7 +19,6 @@ export const UserProvider = ({ children }: ProviderData) => {
     await api
       .get(`/users/${userId}`)
       .then((resp) => {
-        console.log(resp);
         setUserProfile(resp.data);
       })
       .catch((err) => console.log(err));

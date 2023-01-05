@@ -1,13 +1,13 @@
 import { Flex } from "@chakra-ui/react";
 import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { UserContext } from "../../../contexts/userContext";
+import { UserContext } from "../../../contexts/UserContext";
+
 import { AdminDetails } from "./AdminDetails";
 
 export const AdminSectionDash = () => {
   const { getUserProfile, userProfile } = useContext(UserContext);
   const { userId } = useParams();
-
   useEffect(() => {
     if (userId) {
       getUserProfile(userId);

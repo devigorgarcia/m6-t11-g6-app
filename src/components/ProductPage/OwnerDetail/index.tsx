@@ -24,7 +24,7 @@ export const ProductPageOwnerDetail = ({ owner }: IOwnerData) => {
       {owner ? (
         <Flex
           bg="grey.9"
-          width={"90%"}
+          width={["90%","70%"]}
           height={"350px"}
           margin={"0 auto"}
           flexDirection={"column"}

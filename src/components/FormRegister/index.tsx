@@ -15,7 +15,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { useContext, useState } from "react";
-import { LoginContext } from "../../contexts/loginContext";
 import ModalRegister from "../ModalRegister";
 import { RegisterContext } from "../../contexts/registerContext";
 
