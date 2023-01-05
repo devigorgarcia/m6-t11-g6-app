@@ -15,7 +15,7 @@ export const DashboardAdmin = () => {
       let decodeToken = jwt_decode<any>(token);
       getUserProfile(decodeToken.id);
     }
-  }, [userProfile.vehicle]);
+  }, []);
 
   const newCarList = userProfile.vehicle?.filter((vehicle) => vehicle.isCar === true);
   const newBikeList = userProfile.vehicle?.filter(

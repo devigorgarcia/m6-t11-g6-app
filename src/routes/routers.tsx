@@ -18,7 +18,6 @@ export const Router = () => {
       />
       <Route path="/dashboardAdmin" element={<DashboardAdmin />} />
       <Route path="/product/:id" element={<ProductPage />} />
-
     </Routes>
   );
 };

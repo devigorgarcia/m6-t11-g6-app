@@ -13,6 +13,9 @@ export interface ModalContextData {
   isOpenDelete: boolean;
   onOpenDelete: () => void;
   onCloseDelete: () => void;
+  isOpenEditProfile: boolean;
+  onOpenEditProfile: () => void;
+  onCloseEditProfile: () => void;
 }
 
 export interface IEditModalProps {
