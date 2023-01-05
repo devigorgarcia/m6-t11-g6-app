@@ -28,7 +28,7 @@ export const ShowCaseDashBikes = ({ bikes, user }: ICarsData) => {
               })}
         </HStack>
       ) : (
-        <h1>Oi</h1>
+        <h1>Sem Motos</h1>
       )}
     </Flex>
   );

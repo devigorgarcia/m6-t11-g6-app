@@ -1,14 +1,7 @@
-import { Avatar, Button, Flex, Text } from "@chakra-ui/react";
-import { useContext } from "react";
-import { useParams } from "react-router-dom";
-import { ModalContext } from "../../../contexts/ModalContext";
-import { CreateVehicleModal } from "../../Modals/CreateVehicleModal";
-import { DeleteVehicleModal } from "../../Modals/DeleteVehicleModal";
-import { SucessCreateModal } from "../../Modals/SucessModal";
+import { Avatar, Flex, Text } from "@chakra-ui/react";
 
 export const AnnouncementDetails = ({ user }: any) => {
-  const { userId } = useParams();
-  const { onOpenCreate } = useContext(ModalContext);
+  console.log(user);
   return (
     <>
       <Flex

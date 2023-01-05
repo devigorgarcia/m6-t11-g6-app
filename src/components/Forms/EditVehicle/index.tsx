@@ -25,11 +25,12 @@ import { ModalContext } from "../../../contexts/ModalContext";
 export const EditVehicleForm = ({ vehicleInfo }: IEditModalProps) => {
   const { updateVehicle } = useContext(VehicleContext);
   const { onOpenDelete } = useContext(ModalContext);
-
   const actualGalleryArray = () => {
     let newArray = [];
-    for (let i = 0; i < vehicleInfo.gallery.length; i++) {
-      newArray.push(vehicleInfo.gallery[i].url);
+    if (vehicleInfo.gallery) {
+      for (let i = 0; i < vehicleInfo.gallery.length; i++) {
+        newArray.push(vehicleInfo.gallery[i].url);
+      }
     }
     return newArray;
   };

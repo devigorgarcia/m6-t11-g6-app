@@ -1,7 +1,6 @@
 import { Flex, Heading, HStack } from "@chakra-ui/react";
 import { IVehicleProfileData } from "../../../interfaces/VehicleContext/Vehicle.interfaces";
 import { VehicleCardAdmin } from "../../DashboardAdmin/UserSectionDash/AdminDetails/VehicleCardAdmin";
-
 import { VehicleCardDash } from "../VehicleDashCard";
 
 export interface ICarsData {
