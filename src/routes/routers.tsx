@@ -21,9 +21,11 @@ export const Router = () => {
       />
       <Route path="/dashboardAdmin" element={<DashboardAdmin />} />
       <Route path="/product/:id" element={<ProductPage />} />
+
       <Route path="/resetPassword" element={<ResetPasswordPage />} />
       <Route path="/confirmToken" element={<ConfirmTokenPage />} />
       <Route path="/newPassword" element={<NewPasswordPage />} />
+
     </Routes>
   );
 };
