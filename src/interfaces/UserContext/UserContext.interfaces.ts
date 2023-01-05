@@ -1,8 +1,10 @@
 import { IVehicleProfileData } from "../VehicleContext/Vehicle.interfaces";
+import { IEditProfileData } from "../../components/Forms/EditProfile";
 
 export interface UserContextData {
   getUserProfile: (userId: string) => Promise<void>;
   userProfile: UserProfileData;
+  updateProfile: (data: IEditProfileData, userId: string) => Promise<void>
 }
 
 export interface IUserData {
