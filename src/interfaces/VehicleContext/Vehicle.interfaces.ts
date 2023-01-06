@@ -25,6 +25,13 @@ export interface IUserOwner {
   descripiton: string;
 }
 
+export interface IOwnerData {
+  owner: IUserOwner
+}
+
+export interface IUrl {
+  url: string
+}
 export interface ICreateVehicleData {
   id: string;
   title: string;

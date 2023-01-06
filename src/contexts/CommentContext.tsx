@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import {
   ICommentContext,
   ICommentContextData,
+  ICommentsData,
 } from "../interfaces/Comment/contextComment.interfafe";
 import { ProviderData } from "../interfaces/provider.interface";
 import { api } from "../api";
@@ -17,6 +18,9 @@ export const CommentProvider = ({ children }: ProviderData) => {
   const [oneComment, setOneComment] = useState<ICommentContext>(
     {} as ICommentContext
   );
+  const [newComment, setNewComment] = useState<ICommentsData>(
+    {} as ICommentsData
+  );
 
   const token = localStorage.getItem("@MotorShop:Token");
 
@@ -25,10 +29,7 @@ export const CommentProvider = ({ children }: ProviderData) => {
   const createComment = async (content: string, vehicleId: string) => {
     await api
       .post(`/comments/${vehicleId}`, content)
-      .then((resp) => {
-        setOneComment(resp.data);
-        console.log(resp);
-      })
+      .then((resp) => setNewComment(resp.data))
       .catch((err) => console.log(err));
   };
 
@@ -46,14 +47,39 @@ export const CommentProvider = ({ children }: ProviderData) => {
       .catch((err) => console.log(err));
   };
 
+  const updateComment = async (commentId: string, newContent: string, onCloseEdit: () => void) => {
+    const newComment = {content :newContent}
+    await api
+      .patch(`/comments/${commentId}/comment`, newComment)
+      .then((res) => {
+        console.log(res.data)
+        setNewComment(res.data);
+        onCloseEdit();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const deleteComment = async (commentId: string, onCloseDelete: () => void) => {
+    await api
+      .delete(`/comments/${commentId}/comment`)
+      .then((res) => {
+        setNewComment(res.data);
+        onCloseDelete();
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <CommentContext.Provider
       value={{
         createComment,
         getComments,
         getOneComment,
+        deleteComment,
+        updateComment,
         comments,
         oneComment,
+        newComment,
       }}
     >
       {children}

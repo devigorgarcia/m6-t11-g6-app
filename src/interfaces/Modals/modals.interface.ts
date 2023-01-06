@@ -13,9 +13,16 @@ export interface ModalContextData {
   isOpenDelete: boolean;
   onOpenDelete: () => void;
   onCloseDelete: () => void;
+  isOpenImage: boolean;
+  onOpenImage: () => void;
+  onCloseImage: () => void;
+  isOpenComment: boolean
+  onOpenComment: () => void;
+  onCloseComment: () => void;
   isOpenEditProfile: boolean;
   onOpenEditProfile: () => void;
   onCloseEditProfile: () => void;
+
 }
 
 export interface IEditModalProps {

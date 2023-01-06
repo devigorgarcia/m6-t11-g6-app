@@ -13,26 +13,42 @@ export const ModalProvider = ({ children }: ProviderData) => {
     onOpen: onOpenCreate,
     onClose: onCloseCreate,
   } = useDisclosure();
+  
   const {
     isOpen: isOpenSucess,
     onOpen: onOpenSucess,
     onClose: onCloseSucess,
   } = useDisclosure();
+  
   const {
     isOpen: isOpenEdit,
     onOpen: onOpenEdit,
     onClose: onCloseEdit,
   } = useDisclosure();
+  
   const {
     isOpen: isOpenDelete,
     onOpen: onOpenDelete,
     onClose: onCloseDelete,
   } = useDisclosure();
+  
   const {
+    isOpen: isOpenImage,
+    onOpen: onOpenImage,
+    onClose: onCloseImage,
+  } = useDisclosure();
+  
+  const {
+    isOpen: isOpenComment,
+    onOpen: onOpenComment,
+    onClose: onCloseComment,
+  } = useDisclosure();
+
     isOpen: isOpenEditProfile,
     onOpen: onOpenEditProfile,
     onClose: onCloseEditProfile
   } = useDisclosure()
+
 
   return (
     <ModalContext.Provider
@@ -49,6 +65,12 @@ export const ModalProvider = ({ children }: ProviderData) => {
         isOpenDelete,
         onOpenDelete,
         onCloseDelete,
+        isOpenImage,
+        onOpenImage,
+        onCloseImage,
+        isOpenComment,
+        onOpenComment,
+        onCloseComment,
         isOpenEditProfile,
         onOpenEditProfile,
         onCloseEditProfile
