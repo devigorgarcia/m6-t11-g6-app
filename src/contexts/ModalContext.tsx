@@ -28,6 +28,16 @@ export const ModalProvider = ({ children }: ProviderData) => {
     onOpen: onOpenDelete,
     onClose: onCloseDelete,
   } = useDisclosure();
+  const {
+    isOpen: isOpenImage,
+    onOpen: onOpenImage,
+    onClose: onCloseImage,
+  } = useDisclosure();
+  const {
+    isOpen: isOpenComment,
+    onOpen: onOpenComment,
+    onClose: onCloseComment,
+  } = useDisclosure();
 
   return (
     <ModalContext.Provider
@@ -44,6 +54,12 @@ export const ModalProvider = ({ children }: ProviderData) => {
         isOpenDelete,
         onOpenDelete,
         onCloseDelete,
+        isOpenImage,
+        onOpenImage,
+        onCloseImage,
+        isOpenComment,
+        onOpenComment,
+        onCloseComment,
       }}
     >
       {children}

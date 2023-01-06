@@ -20,10 +20,13 @@ import { UserContext } from "../../../contexts/UserContext";
 
 
 export const CommentBox = ({ owner, carId }: ICommentContextInfo) => {
+
   const { handleSubmit, register } = useForm<IContent>({});
 
   const { getUserProfile, userProfile } = useContext(UserContext);
+
   const { createComment } = useContext(CommentContext);
+  
   const token = localStorage.getItem("@MotorShop:Token");
 
   useEffect(() => {
@@ -32,8 +35,6 @@ export const CommentBox = ({ owner, carId }: ICommentContextInfo) => {
       getUserProfile(decodeToken.id);
     }
   }, []);
-
-  console.log(userProfile);
 
   const onSubmit = (content: any) => {
     createComment(content, carId);

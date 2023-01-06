@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { api } from "../api";
 import { ProviderData } from "../interfaces/provider.interface";
 import {
@@ -19,7 +19,6 @@ export const UserProvider = ({ children }: ProviderData) => {
     await api
       .get(`/users/${userId}`)
       .then((resp) => {
-        console.log(resp);
         setUserProfile(resp.data);
       })
       .catch((err) => console.log(err));

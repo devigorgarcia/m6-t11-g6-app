@@ -21,6 +21,13 @@ export interface IUserOwner {
   descripiton: string;
 }
 
+export interface IOwnerData {
+  owner: IUserOwner
+}
+
+export interface IUrl {
+  url: string
+}
 export interface ICreateVehicleData {
   id: string;
   title: string;
@@ -38,17 +45,6 @@ export interface ICreateVehicleData {
   user: IUserOwner;
   Comment: ICommentContextData;
 }
-
-// export interface IComment {
-//   content: string;
-//   createdAt: string;
-//   userId: string;
-//   vehicleId: string;
-// }
-
-// export interface IIComments {
-//   comments: IComment;
-// }
 
 export interface IImg {
   image?: string;

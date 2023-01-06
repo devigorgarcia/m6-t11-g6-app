@@ -9,9 +9,9 @@ import { CarImage } from "./CarImage";
 import { useContext, useEffect } from "react";
 import { VehicleContext } from "../../contexts/VehicleContext";
 import { useParams } from "react-router-dom";
-import { CommentContext } from "../../contexts/CommentContext";
 
 export const ProductComponent = () => {
+  
   const { id } = useParams();
 
   const { profileVehicle, vehicleInfo} = useContext(VehicleContext);
@@ -24,6 +24,7 @@ export const ProductComponent = () => {
   const carYear = vehicleInfo.year;
   const carUser = vehicleInfo.user;
   const carId = vehicleInfo.id;
+  const carImages = vehicleInfo.gallery
 
   useEffect(() => {
     if (id) {
@@ -58,7 +59,7 @@ export const ProductComponent = () => {
               display={["flex", "flex", "flex", "none"]}
               flexDirection={["column"]}
             >
-              <CarImages />
+              <CarImages images={carImages}/>
 
               <ProductPageOwnerDetail owner={carUser} />
             </Flex>
@@ -69,11 +70,11 @@ export const ProductComponent = () => {
           </Flex>
           <Flex
             gap={"20px"}
-            display={["none", "none", "none", "flex"]}
+            display={["none", "none", "none","flex","flex", "flex"]}
             flexDirection={["column"]}
             margin={"6.5% 10% 0 auto"}
           >
-            <CarImages />
+            <CarImages images={carImages}/>
 
             <ProductPageOwnerDetail owner={carUser} />
           </Flex>

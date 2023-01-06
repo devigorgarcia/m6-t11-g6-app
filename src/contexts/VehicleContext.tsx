@@ -91,7 +91,6 @@ export const VehicleProvider = ({ children }: ProviderData) => {
   }, []);
 
   const deleteVehicle = async (vehicleId: string) => {
-    console.log(vehicleId);
     await api
       .delete(`/vehicles/${vehicleId}`)
       .then((resp) => {
