@@ -18,7 +18,6 @@ import {
 import jwt_decode from "jwt-decode";
 import { UserContext } from "../../../contexts/UserContext";
 
-
 export const CommentBox = ({ owner, carId }: ICommentContextInfo) => {
 
   const { handleSubmit, register } = useForm<IContent>({});
@@ -34,7 +33,7 @@ export const CommentBox = ({ owner, carId }: ICommentContextInfo) => {
       let decodeToken = jwt_decode<any>(token);
       getUserProfile(decodeToken.id);
     }
-  }, []);
+  }, []); 
 
   const onSubmit = (content: any) => {
     createComment(content, carId);

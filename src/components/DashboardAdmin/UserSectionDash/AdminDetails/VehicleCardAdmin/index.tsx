@@ -4,14 +4,12 @@ import {
   Heading,
   Text,
   Flex,
-  Avatar,
   CardFooter,
   VStack,
   Button,
+  useDisclosure,
 } from "@chakra-ui/react";
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { ModalContext } from "../../../../../contexts/ModalContext";
 import { EditVehicleModal } from "../../../../Modals/EditVehicleModal";
 
 interface IVehicleProps {
@@ -19,8 +17,8 @@ interface IVehicleProps {
 }
 
 export function VehicleCardAdmin({ data }: IVehicleProps) {
-  const { onOpenEdit } = useContext(ModalContext);
   const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { price, km } = data;
   let numberPrice = +price;
@@ -86,7 +84,7 @@ export function VehicleCardAdmin({ data }: IVehicleProps) {
           align="center"
           mt={8}
         >
-          <Button variant="outline1" onClick={onOpenEdit} w={""}>
+          <Button variant="outline1" onClick={onOpen} w={""}>
             Editar
           </Button>
           <Button
@@ -98,7 +96,7 @@ export function VehicleCardAdmin({ data }: IVehicleProps) {
           </Button>
         </Flex>
       </Card>
-      <EditVehicleModal vehicleId={data.id} />
+      <EditVehicleModal vehicle={data} isOpen={isOpen} onClose={onClose} />
     </>
   );
 }

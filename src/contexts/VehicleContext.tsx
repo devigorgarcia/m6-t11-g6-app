@@ -50,12 +50,12 @@ export const VehicleProvider = ({ children }: ProviderData) => {
   };
 
   const profileVehicle = async (id: string) => {
+    console.log(id);
     await api
       .get(`/vehicles/${id}`)
       .then((resp) => {
         setVehicleInfo(resp.data);
         setOwner(resp.data.user);
-        return resp.data;
       })
       .catch((error) => console.log(error));
   };
@@ -66,11 +66,17 @@ export const VehicleProvider = ({ children }: ProviderData) => {
     });
   };
 
-  const updateVehicle = async (data: ICreateVehicleData, vehicleId: string) => {
+  const updateVehicle = async (
+    data: ICreateVehicleData,
+    vehicleId: string,
+    onClose: () => void
+  ) => {
     await api
       .patch(`/vehicles/${vehicleId}`, data)
       .then((resp) => {
         console.log(resp);
+        onClose();
+        setNewVehicle(resp.data);
       })
       .catch((err) => console.log(err));
   };
@@ -95,6 +101,7 @@ export const VehicleProvider = ({ children }: ProviderData) => {
       .delete(`/vehicles/${vehicleId}`)
       .then((resp) => {
         console.log(resp);
+        setNewVehicle(resp.data);
         onCloseDelete();
         onCloseEdit();
       })
@@ -115,7 +122,7 @@ export const VehicleProvider = ({ children }: ProviderData) => {
         carFilter,
         owner,
         deleteVehicle,
-        newVehicle
+        newVehicle,
       }}
     >
       {children}

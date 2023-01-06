@@ -18,6 +18,7 @@ export const DashboardAdmin = () => {
       let decodeToken = jwt_decode<any>(token);
       getUserProfile(decodeToken.id);
     }
+
   }, [newVehicle]);
 
 
@@ -31,8 +32,16 @@ export const DashboardAdmin = () => {
     <>
       <Header />
       <AdminSectionDash />
-      {newCarList ? <ShowCaseDashCars cars={newCarList} /> : <h1>oi</h1>}
-      {newBikeList ? <ShowCaseDashBikes bikes={newBikeList} /> : <h1>oi</h1>}
+      {newCarList ? (
+        <ShowCaseDashCars cars={newCarList} />
+      ) : (
+        <h1>Sem Registro de Veiculos</h1>
+      )}
+      {newBikeList ? (
+        <ShowCaseDashBikes bikes={newBikeList} />
+      ) : (
+        <h1>Sem Registro de Veiculos</h1>
+      )}
     </>
   );
 };

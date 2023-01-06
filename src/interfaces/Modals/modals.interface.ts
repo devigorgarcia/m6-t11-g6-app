@@ -19,8 +19,13 @@ export interface ModalContextData {
   isOpenComment: boolean
   onOpenComment: () => void;
   onCloseComment: () => void;
+  isOpenEditProfile: boolean;
+  onOpenEditProfile: () => void;
+  onCloseEditProfile: () => void;
+
 }
 
 export interface IEditModalProps {
   vehicleInfo: ICreateVehicleData;
+  onClose: () => void;
 }

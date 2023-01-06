@@ -41,8 +41,7 @@ export const AdminDetails = ({ user }: any) => {
           </Flex>
 
           <Text mt="1rem">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's
+            {user.descripiton}
           </Text>
           <Button
             onClick={onOpenCreate}
@@ -55,7 +54,7 @@ export const AdminDetails = ({ user }: any) => {
           </Button>
         </Flex>
       ) : (
-        <h1>oi</h1>
+        <h1>Sem Registro de Veiculos</h1>
       )}
 
       <CreateVehicleModal />

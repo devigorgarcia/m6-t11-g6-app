@@ -30,6 +30,7 @@ export const ResetPasswordProvider = ({ children }: ProviderData) => {
       localStorage.setItem("@MotorsShop:RecToken", token);
       navigate("/newPassword");
     } catch (error) {
+      toast.error("Token Invalido")
       console.log(error);
     }
   };

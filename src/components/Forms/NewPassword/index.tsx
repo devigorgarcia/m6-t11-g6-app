@@ -60,9 +60,9 @@ export const NewPasswordForm = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <FormControl isInvalid={!!errors?.password}>
-        <Box>
+        <Flex flexDir={"column"}>
           <FormLabel htmlFor="password">Insira a nova senha</FormLabel>
-          <InputGroup>
+          <InputGroup maxW={"500px"}>
             <Input
               id="password"
               type={show ? "text" : "password"}
@@ -81,12 +81,12 @@ export const NewPasswordForm = () => {
             </InputRightElement>
           </InputGroup>
           <FormErrorMessage>{errors?.password?.message}</FormErrorMessage>
-        </Box>
+        </Flex>
       </FormControl>
       <FormControl isInvalid={!!errors?.confirmPassword}>
-        <Box>
+        <Flex flexDir={"column"} >
           <FormLabel htmlFor="confirmPassword">Confirme a nova senha</FormLabel>
-          <InputGroup>
+          <InputGroup maxW={"500px"}>
             <Input
               id="confirmPassword"
               type={show ? "text" : "password"}
@@ -105,7 +105,7 @@ export const NewPasswordForm = () => {
             </InputRightElement>
           </InputGroup>
           <FormErrorMessage>{errors.confirmPassword?.message}</FormErrorMessage>
-        </Box>
+        </Flex>
       </FormControl>
       <Button type="submit" variant={"brand1"}>
         Confirmar

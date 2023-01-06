@@ -18,10 +18,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { VehicleContext } from "../../../contexts/VehicleContext";
 import { ICreateVehicleData } from "../../../interfaces/VehicleContext/Vehicle.interfaces";
+import { ModalContext } from "../../../contexts/ModalContext";
 
 export const CreateVehicleForm = () => {
   const { createVehicle } = useContext(VehicleContext);
-
+  const {onCloseCreate} = useContext(ModalContext)
   const [isCar, setIsCar] = useState<boolean>(true);
   const [inputNumber, setInputNumber] = useState([1]);
 
@@ -162,7 +163,7 @@ export const CreateVehicleForm = () => {
         justifyContent="flex-end"
         paddingBottom={6}
       >
-        <Button variant="negative">Cancelar</Button>
+        <Button variant="negative" onClick={onCloseCreate}>Cancelar</Button>
         <Button
           disabled={Object.entries(errors).length == 0 ? false : true}
           type="submit"

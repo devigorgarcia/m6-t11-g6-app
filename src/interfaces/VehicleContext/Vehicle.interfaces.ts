@@ -6,13 +6,17 @@ export interface VehicleContextData {
   vehicleInfo: ICreateVehicleData;
   getVehicles: () => Promise<void>;
   vehicles: ICreateVehicleData[];
-  updateVehicle: (data: ICreateVehicleData, vehicleId: string) => Promise<void>;
+  updateVehicle: (
+    data: ICreateVehicleData,
+    vehicleId: string,
+    onClose: () => void
+  ) => Promise<void>;
   allVehicles: IVehicleProfileData[];
   setCarFilter: React.Dispatch<React.SetStateAction<boolean | null>>;
   carFilter: boolean | null;
   owner: IUserOwner;
   deleteVehicle: (vehicleId: string) => Promise<void>;
-  newVehicle: any
+  newVehicle: any;
 }
 
 export interface IUserOwner {

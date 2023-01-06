@@ -19,6 +19,7 @@ import { EditCommentModal } from "../../Modals/EditCommentModal";
 interface ICarId {
   carId: string;
 }
+
 export const Comments = ({ carId }: ICarId) => {
 
   const { getComments, comments, newComment } = useContext(CommentContext);
@@ -67,6 +68,7 @@ export const Comments = ({ carId }: ICarId) => {
 
     return `${diff} dias`;
   };
+
 
   return (
     <>
