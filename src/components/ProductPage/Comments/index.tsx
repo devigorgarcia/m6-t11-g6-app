@@ -7,7 +7,7 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import bolinha from "../../../assets/bolinha.svg";
 import { CommentContext } from "../../../contexts/CommentContext";
 import { VehicleContext } from "../../../contexts/VehicleContext";
@@ -21,10 +21,11 @@ interface ICarId {
 }
 
 export const Comments = ({ carId }: ICarId) => {
-
   const { getComments, comments, newComment } = useContext(CommentContext);
 
   const { profileVehicle } = useContext(VehicleContext);
+
+  const [userDecoded, setUserDecoded] = useState<any>({} as any);
 
   const {
     isOpen: isOpenEdit,
@@ -43,9 +44,10 @@ export const Comments = ({ carId }: ICarId) => {
   useEffect(() => {
     profileVehicle(carId);
     getComments(carId);
+    if (token) {
+      setUserDecoded(jwt_decode<any>(token));
+    }
   }, [newComment]);
-
-  const decodeToken = jwt_decode<any>(token);
 
   const handleDate = (date: string) => {
     const commentDate = String(date);
@@ -68,7 +70,6 @@ export const Comments = ({ carId }: ICarId) => {
 
     return `${diff} dias`;
   };
-
 
   return (
     <>
@@ -106,7 +107,7 @@ export const Comments = ({ carId }: ICarId) => {
                   </Flex>
                   <Text>{comment.content}</Text>
 
-                  {decodeToken?.id && comment.userId === decodeToken.id && (
+                  {userDecoded?.id && comment.userId === userDecoded.id && (
                     <>
                       <Flex gap={"2rem"}>
                         <Button bg="yellow" onClick={onOpenEdit}>
@@ -118,6 +119,7 @@ export const Comments = ({ carId }: ICarId) => {
                       </Flex>
                     </>
                   )}
+
                   <DeleteCommentModal
                     isOpenDelete={isOpenDelete}
                     onCloseDelete={onCloseDelete}

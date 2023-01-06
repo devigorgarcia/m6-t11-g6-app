@@ -44,7 +44,7 @@ export const ModalProvider = ({ children }: ProviderData) => {
     onClose: onCloseComment,
   } = useDisclosure();
   
-  const {
+  const{
     isOpen: isOpenEditProfile,
     onOpen: onOpenEditProfile,
     onClose: onCloseEditProfile,

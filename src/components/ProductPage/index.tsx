@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { ProductPageOwnerDetail } from "./OwnerDetail";
 import { CarImages } from "./CarImages";
 import { CarDescription } from "./CarDescription/indedx";
@@ -11,10 +11,11 @@ import { VehicleContext } from "../../contexts/VehicleContext";
 import { useParams } from "react-router-dom";
 
 export const ProductComponent = () => {
-  
   const { id } = useParams();
 
-  const { profileVehicle, vehicleInfo} = useContext(VehicleContext);
+  const { profileVehicle, vehicleInfo } = useContext(VehicleContext);
+
+  const token = localStorage.getItem("@MotorShop:Token") || "";
 
   const carImage = vehicleInfo.frontImg;
   const carTitle = vehicleInfo.title;
@@ -24,7 +25,7 @@ export const ProductComponent = () => {
   const carYear = vehicleInfo.year;
   const carUser = vehicleInfo.user;
   const carId = vehicleInfo.id;
-  const carImages = vehicleInfo.gallery
+  const carImages = vehicleInfo.gallery;
 
   useEffect(() => {
     if (id) {
@@ -59,22 +60,36 @@ export const ProductComponent = () => {
               display={["flex", "flex", "flex", "none"]}
               flexDirection={["column"]}
             >
-              <CarImages images={carImages}/>
+              <CarImages images={carImages} />
 
               <ProductPageOwnerDetail owner={carUser} />
             </Flex>
 
-            <Comments carId={carId}/>
+            <Comments carId={carId} />
 
-            <CommentBox owner={carUser} carId={carId} />
+            {token ? (
+              <CommentBox owner={carUser} carId={carId} />
+            ) : (
+              <Flex
+                bg="grey.9"
+                width={["90%", "70%"]}
+                margin={"0 auto"}
+                flexDirection={"column"}
+                justifyContent={"flex-start"}
+                padding={"2rem"}
+                borderRadius={"5px"}
+              >
+                <Text fontWeight={"600"}> Você precisa estar logado para comentar!</Text>
+              </Flex>
+            )}
           </Flex>
           <Flex
             gap={"20px"}
-            display={["none", "none", "none","flex","flex", "flex"]}
+            display={["none", "none", "none", "flex", "flex", "flex"]}
             flexDirection={["column"]}
             margin={"6.5% 10% 0 auto"}
           >
-            <CarImages images={carImages}/>
+            <CarImages images={carImages} />
 
             <ProductPageOwnerDetail owner={carUser} />
           </Flex>
