@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { api } from "../api";
 import { IEditProfileData } from "../components/Forms/EditProfile";
 import { ProviderData } from "../interfaces/provider.interface";
