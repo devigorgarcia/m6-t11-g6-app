@@ -7,6 +7,7 @@ import { ShowCaseBikes } from "../../components/ShowCaseBikes";
 import { ShowCaseCars } from "../../components/ShowCaseCars";
 import { VehicleContext } from "../../contexts/VehicleContext";
 import { IVehicleProfileData } from "../../interfaces/VehicleContext/Vehicle.interfaces";
+import { Leilao } from "../../components/Leilao";
 
 export function Home() {
   const { allVehicles, carFilter } = useContext(VehicleContext);
@@ -29,6 +30,7 @@ export function Home() {
     <>
       <Header />
       <HeaderSlogan />
+      <Leilao/>
       {carFilter == null ? (
         <>
           <ShowCaseCars cars={cars} />
